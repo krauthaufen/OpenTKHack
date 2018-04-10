@@ -132,9 +132,6 @@
     <Compile Include="CarbonGLControl.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Agl.cs">
       <DependentUpon>CarbonGLControl.cs</DependentUpon>
       <SubType>Code</SubType>
@@ -166,6 +163,9 @@
     <AdditionalFiles Include="$(SolutionDir)\stylecop.ruleset">
       <Link>stylecop.ruleset</Link>
     </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

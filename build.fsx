@@ -88,11 +88,12 @@ let runtimeProjects =
             f
         else
             f
+            -- "**/OpenTK.GLWidget.csproj"
             -- "**/OpenTK.Android.csproj"
             -- "**/OpenTK.iOS.csproj"
 
     !! "src/**/*.??proj"
-    ++ "tests/**/OpenTK.Tests*.??proj"
+    -- "tests/**/OpenTK.Tests*.??proj"
     -- "src/Generator.*/**.csproj"
     |> xamarinFilter
 
@@ -102,37 +103,38 @@ let activeProjects =
 
 // Generate assembly info files with the right version & up-to-date information
 Target "AssemblyInfo" (fun _ ->
-    let getAssemblyInfoAttributes (projectName:string) =
-        let projectName =
-            if projectName.Contains(".iOS") || projectName.Contains(".Android") then
-                projectName.Split('.').[0]
-            else
-                projectName
-        [ Attribute.Title (projectName)
-          Attribute.Product project
-          Attribute.Description summary
-          Attribute.Version release.AssemblyVersion
-          Attribute.FileVersion release.AssemblyVersion
-          Attribute.CLSCompliant true
-          Attribute.Copyright copyright
-        ]
+    ()
+    //let getAssemblyInfoAttributes (projectName:string) =
+    //    let projectName =
+    //        if projectName.Contains(".iOS") || projectName.Contains(".Android") then
+    //            projectName.Split('.').[0]
+    //        else
+    //            projectName
+    //    [ Attribute.Title (projectName)
+    //      Attribute.Product project
+    //      Attribute.Description summary
+    //      Attribute.Version release.AssemblyVersion
+    //      Attribute.FileVersion release.AssemblyVersion
+    //      Attribute.CLSCompliant true
+    //      Attribute.Copyright copyright
+    //    ]
 
-    let getProjectDetails projectPath =
-        let projectName = System.IO.Path.GetFileNameWithoutExtension(projectPath)
-        ( projectPath,
-          projectName,
-          System.IO.Path.GetDirectoryName(projectPath),
-          (getAssemblyInfoAttributes projectName)
-        )
+    //let getProjectDetails projectPath =
+    //    let projectName = System.IO.Path.GetFileNameWithoutExtension(projectPath)
+    //    ( projectPath,
+    //      projectName,
+    //      System.IO.Path.GetDirectoryName(projectPath),
+    //      (getAssemblyInfoAttributes projectName)
+    //    )
 
-    activeProjects
-    |> Seq.map getProjectDetails
-    |> Seq.iter (fun (projFileName, projectName, folderName, attributes) ->
-        match projFileName with
-        | Fsproj -> CreateFSharpAssemblyInfo (folderName @@ "AssemblyInfo.fs") attributes
-        | Csproj -> CreateCSharpAssemblyInfo ((folderName @@ "Properties") @@ "AssemblyInfo.cs") attributes
-        | Vbproj -> CreateVisualBasicAssemblyInfo ((folderName @@ "My Project") @@ "AssemblyInfo.vb") attributes
-        )
+    //activeProjects
+    //|> Seq.map getProjectDetails
+    //|> Seq.iter (fun (projFileName, projectName, folderName, attributes) ->
+    //    match projFileName with
+    //    | Fsproj -> CreateFSharpAssemblyInfo (folderName @@ "AssemblyInfo.fs") attributes
+    //    | Csproj -> CreateCSharpAssemblyInfo ((folderName @@ "Properties") @@ "AssemblyInfo.cs") attributes
+    //    | Vbproj -> CreateVisualBasicAssemblyInfo ((folderName @@ "My Project") @@ "AssemblyInfo.vb") attributes
+    //    )
 )
 
 // Copies binaries from default VS location to expected bin folder

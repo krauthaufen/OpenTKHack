@@ -8,18 +8,21 @@
     <DocumentationFile>bin\Debug\netstandard2.0\OpenTK.xml</DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>7.1</LangVersion>
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;MINIMAL;SDL2</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;SDL2</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>bin\Release</OutputPath>
     <DocumentationFile>bin\Release\netstandard2.0\OpenTK.xml</DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>7.1</LangVersion>
-    <DefineConstants>TRACE;NETSTANDARD2_0;MINIMAL;SDL2</DefineConstants>
+    <DefineConstants>TRACE;NETSTANDARD2_0;SDL2</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
 	<Compile Remove="Platform\Android\**" />
 	<Compile Remove="Platform\iPhoneOS\**" />
 	<Compile Remove="Graphics\ES31\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
