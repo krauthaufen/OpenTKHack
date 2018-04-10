@@ -25,6 +25,7 @@
 
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using OpenTK.Input;
@@ -42,10 +43,14 @@ namespace OpenTK.Platform.Windows
     /// </summary>
     internal sealed class WinGLNative : NativeWindowBase
     {
+        [DllImport("kernel32.dll")]
+        extern static IntPtr GetModuleHandle(string lpModuleName);
+
+
         private const ExtendedWindowStyle ParentStyleEx = ExtendedWindowStyle.WindowEdge | ExtendedWindowStyle.ApplicationWindow;
         private const ExtendedWindowStyle ChildStyleEx = 0;
 
-        private readonly IntPtr Instance = Marshal.GetHINSTANCE(typeof(WinGLNative).Module);
+        private readonly IntPtr Instance = GetModuleHandle(Path.GetFileName(typeof(WinGLNative).Assembly.Location));
         private readonly IntPtr ClassName = Marshal.StringToHGlobalAuto(Guid.NewGuid().ToString());
         private readonly WindowProcedure WindowProcedureDelegate;
 
@@ -1241,9 +1246,9 @@ namespace OpenTK.Platform.Windows
                         }
                     }
 
-                    Debug.Assert(oldCursorHandle != IntPtr.Zero);
-                    Debug.Assert(oldCursorHandle != cursor_handle);
-                    Debug.Assert(oldCursor != cursor);
+                    System.Diagnostics.Debug.Assert(oldCursorHandle != IntPtr.Zero);
+                    System.Diagnostics.Debug.Assert(oldCursorHandle != cursor_handle);
+                    System.Diagnostics.Debug.Assert(oldCursor != cursor);
 
                     // If we've replaced a custom (non-default) cursor we need to free the handle.
                     if (oldCursor != MouseCursor.Default)
