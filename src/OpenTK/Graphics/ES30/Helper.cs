@@ -331,27 +331,27 @@ namespace OpenTK.Graphics.ES30
             }
         }
 
-        public static void Viewport(Size size)
+        public static void Viewport(OpenTK.Size size)
         {
             GL.Viewport(0, 0, size.Width, size.Height);
         }
 
-        public static void Viewport(Point location, Size size)
-        {
-            GL.Viewport(location.X, location.Y, size.Width, size.Height);
-        }
-
-        public static void Viewport(Rectangle rectangle)
-        {
-            GL.Viewport(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
-        }
-#if MINIMAL
         public static void Viewport(OpenTK.Point location, OpenTK.Size size)
         {
             GL.Viewport(location.X, location.Y, size.Width, size.Height);
         }
 
         public static void Viewport(OpenTK.Rectangle rectangle)
+        {
+            GL.Viewport(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
+        }
+#if !MINIMAL
+        public static void Viewport(System.Drawing.Point location, System.Drawing.Size size)
+        {
+            GL.Viewport(location.X, location.Y, size.Width, size.Height);
+        }
+
+        public static void Viewport(System.Drawing.Rectangle rectangle)
         {
             GL.Viewport(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
         }
@@ -363,7 +363,7 @@ namespace OpenTK.Graphics.ES30
 #pragma warning restore 1573
     }
 
-    #pragma warning disable 1574 // XML comment cref attribute could not be resolved, compiler bug in Mono 3.4.0
+#pragma warning disable 1574 // XML comment cref attribute could not be resolved, compiler bug in Mono 3.4.0
 
     /// <summary>
     /// Defines the signature of a debug callback for
