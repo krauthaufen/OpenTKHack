@@ -11,7 +11,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>7.1</LangVersion>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;SDL2;WIN32;CARBON;X11</DefineConstants>
-    <NoWarn>1701;1702;1705;3021</NoWarn>
+    <NoWarn>1701;1702;1705;3021;1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>bin\Release</OutputPath>
@@ -19,6 +19,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>7.1</LangVersion>
     <DefineConstants>TRACE;NETSTANDARD2_0;SDL2;WIN32;CARBON;X11</DefineConstants>
+    <NoWarn>1701;1702;1705;3021;1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
 	<Compile Remove="Platform\Android\**" />
@@ -28,7 +29,7 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-      <Exec Command="$(OutputPath)..\..\..\..\Generator.Rewrite\bin\Release\Rewrite.exe --assembly $(OutputPath)OpenTK.dll --signing-key ..\..\OpenTK.snk&quot; /" />
-    </Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="$(OutputPath)..\..\..\..\Generator.Rewrite\bin\$(ConfigurationName)\Rewrite.exe --assembly $(OutputPath)OpenTK.dll --signing-key $(OutputPath)..\..\..\..\..\OpenTK.snk&quot;" />
+  </Target>
 </Project>
