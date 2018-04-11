@@ -204,6 +204,7 @@ Target "NuGet" (fun _ ->
 
     Paket.Pack(fun p ->
         { p with
+            PinProjectReferences = true
             OutputPath = "bin"
             ExcludedTemplates = xamExcludes
             Version = release.NugetVersion
