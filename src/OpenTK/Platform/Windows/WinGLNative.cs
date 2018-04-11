@@ -31,7 +31,6 @@ using System.Text;
 using OpenTK.Input;
 #if !MINIMAL
 using System.Drawing;
-using System.Drawing.Imaging;
 #endif
 
 namespace OpenTK.Platform.Windows

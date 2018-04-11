@@ -32,6 +32,7 @@ using OpenTK.Platform;
 
 namespace OpenTK
 {
+
     /// <summary>
     /// Defines the interface for a native window.
     /// </summary>

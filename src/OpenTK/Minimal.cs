@@ -1,5 +1,4 @@
-﻿#if ANDROID || IPHONE || MINIMAL
-using System;
+﻿using System;
 
 #if !MINIMAL
 using System.Drawing;
@@ -1606,5 +1605,3 @@ namespace OpenTK.Minimal
     }
 }
 
-
-#endif

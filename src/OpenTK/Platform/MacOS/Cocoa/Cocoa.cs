@@ -29,7 +29,6 @@ using System.Runtime.InteropServices;
 using System;
 #if !MINIMAL
 using System.Drawing;
-using System.Drawing.Imaging;
 #endif
 
 namespace OpenTK.Platform.MacOS
