@@ -1,4 +1,4 @@
-### 3.0.5
+### 3.0.6
 	* Support for OpenGL 4.6
 	* Replaced JoystickButton enum with simple long. (breaking API change)
 	* Increase available joystick buttons to 64.
