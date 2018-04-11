@@ -223,7 +223,7 @@ Target "All" DoNothing
   ==> "GenerateBindings"
   ==> "Build"
   ==> "CopyBinaries"
-  ==> "RunTests"
+//  ==> "RunTests"
   ==> "All"
 
 "All"

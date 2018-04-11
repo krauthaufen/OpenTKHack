@@ -117,9 +117,6 @@
     <Compile Include="ISpecReader.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="CL\CLGenerator.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -273,6 +270,7 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
+    <Folder Include="Properties\" />
     <Folder Include="Specifications\Docs\" />
   </ItemGroup>
   <ItemGroup>
