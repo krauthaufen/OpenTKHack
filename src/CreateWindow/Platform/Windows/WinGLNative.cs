@@ -837,6 +837,9 @@ namespace OpenTK.Platform.Windows
                 case WindowMessage.DESTROY:
                     HandleDestroy(handle, message, wParam, lParam);
                     break;
+
+                case WindowMessage.PAINT:
+                    return IntPtr.Zero;
             }
 
             if (result.HasValue)
