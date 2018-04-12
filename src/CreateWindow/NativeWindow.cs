@@ -57,6 +57,11 @@ namespace OpenTK
         public NativeWindow()
             : this(640, 480, "OpenTK Native Window", GameWindowFlags.Default, GraphicsMode.Default, DisplayDevice.Default) { }
 
+
+        public void Invalidate()
+        {
+            throw new NotImplementedException();
+        }
         // TODO: Remaining constructors.
 
         /// <summary>Constructs a new centered NativeWindow with the specified attributes.</summary>

@@ -105,6 +105,11 @@ namespace OpenTK.Platform.SDL2
             }
         }
 
+
+        public override void Invalidate()
+        {
+            throw new NotImplementedException();
+        }
         private static WindowFlags TranslateFlags(GameWindowFlags flags)
         {
             WindowFlags windowFlags = WindowFlags.Default;

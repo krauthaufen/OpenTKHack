@@ -1516,11 +1516,16 @@ namespace OpenTK.Platform.Windows
             return point;
         }
 
+        public override void Invalidate()
+        {
+            Functions.InvalidateRect(window.Handle, IntPtr.Zero, true);
+        }
+
         private MSG msg;
         public override void ProcessEvents()
         {
             base.ProcessEvents();
-            while (Functions.PeekMessage(ref msg, IntPtr.Zero, 0, 0, PeekMessageFlags.Remove))
+            if (Functions.GetMessage(ref msg, IntPtr.Zero, 0, 0) != 0) //Functions.PeekMessage(ref msg, IntPtr.Zero, 0, 0, PeekMessageFlags.Remove))
             {
                 Functions.TranslateMessage(ref msg);
                 Functions.DispatchMessage(ref msg);

@@ -206,6 +206,11 @@ namespace OpenTK
             }
         }
 
+        public void Invalidate()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Disposes of the GameWindow, releasing all resources consumed by it.
         /// </summary>

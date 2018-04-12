@@ -316,6 +316,8 @@ namespace OpenTK.Platform
 
         public abstract void Close();
 
+        public abstract void Invalidate();
+
         public virtual void ProcessEvents()
         {
             if (!Focused)

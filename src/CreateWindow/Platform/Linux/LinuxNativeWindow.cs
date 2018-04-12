@@ -117,6 +117,12 @@ namespace OpenTK.Platform.Linux
             exists = true;
         }
 
+
+        public override void Invalidate()
+        {
+            throw new NotImplementedException();
+        }
+
         private static BufferObject CreateCursor(IntPtr gbm, MouseCursor cursor)
         {
             if (cursor.Width > 64 || cursor.Height > 64)

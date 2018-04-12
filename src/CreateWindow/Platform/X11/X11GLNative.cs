@@ -306,6 +306,11 @@ namespace OpenTK.Platform.X11
             exists = true;
         }
 
+
+        public override void Invalidate()
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// Constructs and initializes a new X11GLNative window.
         /// Call CreateWindow to create the actual render window.

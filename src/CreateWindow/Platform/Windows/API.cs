@@ -389,6 +389,10 @@ namespace OpenTK.Platform.Windows
 
         [SuppressUnmanagedCodeSecurity]
         [DllImport("User32.dll", CharSet = CharSet.Auto), CLSCompliant(false)]
+        internal static extern BOOL InvalidateRect(IntPtr hwnd, IntPtr lpRect, BOOL erase);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport("User32.dll", CharSet = CharSet.Auto), CLSCompliant(false)]
         internal static extern LRESULT DispatchMessage(ref MSG msg);
 
         [SuppressUnmanagedCodeSecurity]
