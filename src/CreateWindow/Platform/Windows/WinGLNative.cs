@@ -837,9 +837,6 @@ namespace OpenTK.Platform.Windows
                 case WindowMessage.DESTROY:
                     HandleDestroy(handle, message, wParam, lParam);
                     break;
-
-                case WindowMessage.PAINT:
-                    return IntPtr.Zero;
             }
 
             if (result.HasValue)
@@ -1521,7 +1518,7 @@ namespace OpenTK.Platform.Windows
 
         public override void Invalidate()
         {
-            Functions.InvalidateRect(window.Handle, IntPtr.Zero, true);
+            Functions.PostMessage(window.Handle, WindowMessage.NULL, IntPtr.Zero, IntPtr.Zero);
         }
 
         private MSG msg;
@@ -1532,6 +1529,11 @@ namespace OpenTK.Platform.Windows
             {
                 Functions.TranslateMessage(ref msg);
                 Functions.DispatchMessage(ref msg);
+                while(Functions.PeekMessage(ref msg, IntPtr.Zero, 0, 0, PeekMessageFlags.Remove))
+                {
+                    Functions.TranslateMessage(ref msg);
+                    Functions.DispatchMessage(ref msg);
+                }
             }
         }
 
