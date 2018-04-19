@@ -30,6 +30,6 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="$(OutputPath)..\..\..\..\Generator.Rewrite\bin\$(ConfigurationName)\Rewrite.exe --assembly $(OutputPath)OpenTK.dll --signing-key $(OutputPath)..\..\..\..\..\OpenTK.snk&quot;" />
+    <Exec Command="&quot;$(OutputPath)..\..\..\..\Generator.Rewrite\bin\Release\Rewrite.exe&quot; --assembly &quot;$(OutputPath)OpenTK.dll&quot; --signing-key &quot;$(OutputPath)..\..\..\..\..\OpenTK.snk&quot;" />
   </Target>
 </Project>
