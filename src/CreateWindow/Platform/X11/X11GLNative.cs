@@ -320,7 +320,6 @@ namespace OpenTK.Platform.X11
             using (new XLock(window.Display))
             {
                 var a = Functions.XSendEvent(this.window.Display, this.Handle, true, EventMask.NoEventMask, ref evt);
-                Console.WriteLine(a);
                 Functions.XFlush(this.window.Display);
             }
         }
