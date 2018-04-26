@@ -26,6 +26,7 @@ type MyGame() =
             sw.Restart()
 
     override x.OnKeyDown(e) =
+        printfn "%A" e.Key
         if e.Key = OpenTK.Input.Key.Enter then
             x.RenderAsFastAsPossible <- not x.RenderAsFastAsPossible
 

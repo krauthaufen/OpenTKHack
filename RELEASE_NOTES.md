@@ -1,3 +1,6 @@
+### 3.0.14
+	* fixed KeyMapping for windows
+
 ### 3.0.13
 	* RenderAsFastAsPossible flag
 

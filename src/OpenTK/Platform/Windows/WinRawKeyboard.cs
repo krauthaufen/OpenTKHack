@@ -161,10 +161,7 @@ namespace OpenTK.Platform.Windows
                     rin.Data.Keyboard.Message == (int)WindowMessage.SYSKEYDOWN;
                 var scancode = rin.Data.Keyboard.MakeCode;
                 var vkey = rin.Data.Keyboard.VKey;
-
-                bool extended0 = (int)(rin.Data.Keyboard.Flags & RawInputKeyboardDataFlags.E0) != 0;
-                bool extended1 = (int)(rin.Data.Keyboard.Flags & RawInputKeyboardDataFlags.E1) != 0;
-
+                var extended = ((rin.Data.Keyboard.Flags & RawInputKeyboardDataFlags.E0) != RawInputKeyboardDataFlags.MAKE);
                 bool is_valid = true;
 
                 ContextHandle handle = new ContextHandle(rin.Header.Device);
@@ -186,7 +183,7 @@ namespace OpenTK.Platform.Windows
                 int keyboard_handle = rawids.ContainsKey(handle) ? rawids[handle] : 0;
                 keyboard = keyboards[keyboard_handle];
 
-                Key key = WinKeyMap.TranslateKey(scancode, vkey, extended0, extended1, out is_valid);
+                Key key = WinKeyMap.TranslateKey((uint)scancode, vkey, extended, out is_valid);
 
                 if (is_valid)
                 {

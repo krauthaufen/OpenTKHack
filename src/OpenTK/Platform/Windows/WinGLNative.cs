@@ -84,12 +84,12 @@ namespace OpenTK.Platform.Windows
 
         private const long ExtendedBit = 1 << 24;           // Used to distinguish left and right control, alt and enter keys.
 
-        public static readonly uint ShiftLeftScanCode = Functions.MapVirtualKey(VirtualKeys.LSHIFT, 0);
-        public static readonly uint ShiftRightScanCode = Functions.MapVirtualKey(VirtualKeys.RSHIFT, 0);
-        public static readonly uint ControlLeftScanCode = Functions.MapVirtualKey(VirtualKeys.LCONTROL, 0);
-        public static readonly uint ControlRightScanCode = Functions.MapVirtualKey(VirtualKeys.RCONTROL, 0);
-        public static readonly uint AltLeftScanCode = Functions.MapVirtualKey(VirtualKeys.LMENU, 0);
-        public static readonly uint AltRightScanCode = Functions.MapVirtualKey(VirtualKeys.RMENU, 0);
+        public static readonly uint ShiftLeftScanCode = Functions.MapVirtualKey(VirtualKeys.VK_LSHIFT, 0);
+        public static readonly uint ShiftRightScanCode = Functions.MapVirtualKey(VirtualKeys.VK_RSHIFT, 0);
+        public static readonly uint ControlLeftScanCode = Functions.MapVirtualKey(VirtualKeys.VK_LCONTROL, 0);
+        public static readonly uint ControlRightScanCode = Functions.MapVirtualKey(VirtualKeys.VK_RCONTROL, 0);
+        public static readonly uint AltLeftScanCode = Functions.MapVirtualKey(VirtualKeys.VK_LMENU, 0);
+        public static readonly uint AltRightScanCode = Functions.MapVirtualKey(VirtualKeys.VK_RMENU, 0);
 
         private MouseCursor cursor = MouseCursor.Default;
         private IntPtr cursor_handle = Functions.LoadCursor(CursorName.Arrow);
@@ -621,12 +621,17 @@ namespace OpenTK.Platform.Windows
             // Win95 does not distinguish left/right key constants (GetAsyncKeyState returns 0).
             // In this case, both keys will be reported as pressed.
 
+            var scancode = (uint)(((long)lParam & 0x00FF0000) >> 16);
             bool extended = (lParam.ToInt64() & ExtendedBit) != 0;
-            short scancode = (short)((lParam.ToInt64() >> 16) & 0xff);
+            //var scancode = (uint)(lParam.ToInt64() >> 16); //(short)((lParam.ToInt64() >> 16) & 0xff);
+            var vkey = (VirtualKeys)((long)wParam);// Functions.MapVirtualKey(scancode, MapVirtualKeyType.ScanCodeToVirtualKeyExtended);
+            
+
+            
             //ushort repeat_count = unchecked((ushort)((ulong)lParam.ToInt64() & 0xffffu));
-            VirtualKeys vkey = (VirtualKeys)wParam;
+            //VirtualKeys vkey = (VirtualKeys)wParam;
             bool is_valid;
-            Key key = WinKeyMap.TranslateKey(scancode, vkey, extended, false, out is_valid);
+            Key key = WinKeyMap.TranslateKey(scancode, vkey, extended, out is_valid);
 
             if (is_valid)
             {
