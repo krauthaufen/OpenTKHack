@@ -1,3 +1,6 @@
+### 3.0.13
+	* RenderAsFastAsPossible flag
+
 ### 3.0.12
 	* Support for OpenGL 4.6
 	* Replaced JoystickButton enum with simple long. (breaking API change)
