@@ -1,3 +1,6 @@
+### 3.0.15
+	* fixed races on rendering_dirty
+
 ### 3.0.14
 	* fixed KeyMapping for windows
 

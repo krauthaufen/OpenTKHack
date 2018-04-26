@@ -934,8 +934,8 @@ namespace OpenTK
         { 
             if (Exists && !isExiting)
             {
-                OnRenderFrame(e);
                 rendering_dirty = false;
+                OnRenderFrame(e);
             }
         }
 
