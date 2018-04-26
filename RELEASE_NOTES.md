@@ -1,3 +1,6 @@
+### 3.0.16
+	* fixed Alt keys (were shift)
+
 ### 3.0.15
 	* fixed races on rendering_dirty
 

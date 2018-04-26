@@ -313,8 +313,8 @@ namespace OpenTK.Platform.Windows
                 case VirtualKeys.VK_MENU: return Key.AltLeft;
                 case VirtualKeys.WS_EX_NOACTIVATE: return Key.Unknown;
                 case VirtualKeys.VK_LSHIFT: return Key.ShiftLeft;
-                case VirtualKeys.VK_RMENU: return Key.ShiftRight;
-                case VirtualKeys.VK_LMENU: return Key.ShiftLeft;
+                case VirtualKeys.VK_RMENU: return Key.AltRight;
+                case VirtualKeys.VK_LMENU: return Key.AltLeft;
                 case VirtualKeys.VK_LCONTROL: return Key.ControlLeft;
                 case VirtualKeys.VK_RCONTROL: return Key.ControlRight;
                 case VirtualKeys.VK_LBUTTON: return Key.Unknown;
