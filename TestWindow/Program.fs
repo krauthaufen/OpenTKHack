@@ -25,6 +25,9 @@ type MyGame() =
             frameCount <- 0
             sw.Restart()
 
+    override x.OnKeyDown(e) =
+        if e.Key = OpenTK.Input.Key.Enter then
+            x.RenderAsFastAsPossible <- not x.RenderAsFastAsPossible
 
 [<EntryPoint>]
 let main argv =
@@ -33,7 +36,6 @@ let main argv =
     g.Run()
 
     use win = Factory.Default.CreateNativeWindow(100,100,800,600,"title",GraphicsMode.Default, OpenTK.GameWindowFlags.Fullscreen,OpenTK.DisplayDevice.Default)
-
     win.WindowInfo |> printfn "window info: %A"
     win.Visible <- true
 

@@ -93,6 +93,10 @@ namespace OpenTK
         private FrameEventArgs update_args = new FrameEventArgs();
         private FrameEventArgs render_args = new FrameEventArgs();
 
+
+        private bool render_as_fast_as_possible = true;
+        private bool rendering_dirty = true;
+
         /// <summary>Constructs a new GameWindow with sensible default attributes.</summary>
         public GameWindow()
             : this(640, 480, GraphicsMode.Default, "OpenTK Game Window", 0, DisplayDevice.Default) { }
@@ -271,6 +275,23 @@ namespace OpenTK
             }
         }
 
+        public override void Invalidate()
+        {
+            rendering_dirty = true;
+            base.Invalidate();
+        }
+
+        public bool RenderAsFastAsPossible
+        {
+            get { return render_as_fast_as_possible; }
+            set
+            {
+                if (value && !render_as_fast_as_possible)
+                    Invalidate();
+
+                render_as_fast_as_possible = value;
+            }
+        }
 
         /// <summary>
         /// Called after an OpenGL context has been established, but before entering the main loop.
@@ -373,8 +394,18 @@ namespace OpenTK
                         {
                             DispatchUpdateFrame(watchRender);
                         }
-                        DispatchRenderFrame();
-                        Invalidate();
+
+                        if(render_as_fast_as_possible)
+                        {
+                            DispatchRenderFrame();
+                            Invalidate();
+                        }
+                        else
+                        {
+                            if (rendering_dirty)
+                                DispatchRenderFrame();
+
+                        }
                     }
                     else
                     {
@@ -889,11 +920,14 @@ namespace OpenTK
         {
             base.OnResize(e);
             glContext.Update(base.WindowInfo);
+            rendering_dirty = true;
+            Invalidate();
         }
 
         private void OnLoadInternal(EventArgs e)
         {
             OnLoad(e);
+            rendering_dirty = true;
         }
 
         private void OnRenderFrameInternal(FrameEventArgs e) 
@@ -901,6 +935,7 @@ namespace OpenTK
             if (Exists && !isExiting)
             {
                 OnRenderFrame(e);
+                rendering_dirty = false;
             }
         }
 

@@ -58,7 +58,7 @@ namespace OpenTK
             : this(640, 480, "OpenTK Native Window", GameWindowFlags.Default, GraphicsMode.Default, DisplayDevice.Default) { }
 
 
-        public void Invalidate()
+        public virtual void Invalidate()
         {
             implementation.Invalidate();
         }
