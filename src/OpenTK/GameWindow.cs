@@ -206,6 +206,7 @@ namespace OpenTK
             }
         }
 
+
         /// <summary>
         /// Disposes of the GameWindow, releasing all resources consumed by it.
         /// </summary>
@@ -373,6 +374,7 @@ namespace OpenTK
                             DispatchUpdateFrame(watchRender);
                         }
                         DispatchRenderFrame();
+                        Invalidate();
                     }
                     else
                     {

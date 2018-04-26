@@ -57,6 +57,11 @@ namespace OpenTK
         public NativeWindow()
             : this(640, 480, "OpenTK Native Window", GameWindowFlags.Default, GraphicsMode.Default, DisplayDevice.Default) { }
 
+
+        public void Invalidate()
+        {
+            implementation.Invalidate();
+        }
         // TODO: Remaining constructors.
 
         /// <summary>Constructs a new centered NativeWindow with the specified attributes.</summary>
@@ -168,6 +173,7 @@ namespace OpenTK
         {
             ProcessEvents(false);
         }
+
 
         /// <summary>
         /// Gets or sets a <see cref="System.Drawing.Rectangle"/> structure

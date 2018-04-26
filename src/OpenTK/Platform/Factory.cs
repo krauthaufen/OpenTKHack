@@ -31,7 +31,7 @@ namespace OpenTK.Platform
     using Graphics;
     using Input;
 
-    internal sealed class Factory : IPlatformFactory
+    public sealed class Factory : IPlatformFactory
     {
         private bool disposed;
 

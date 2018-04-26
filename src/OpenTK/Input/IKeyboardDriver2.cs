@@ -1,6 +1,6 @@
 ﻿namespace OpenTK.Input
 {
-    internal interface IKeyboardDriver2
+    public interface IKeyboardDriver2
     {
         /// <summary>
         /// Retrieves the combined <see cref="OpenTK.Input.KeyboardState"/> for all keyboard devices.

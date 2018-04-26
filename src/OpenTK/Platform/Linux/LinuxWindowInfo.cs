@@ -30,7 +30,7 @@ using OpenTK.Platform.Egl;
 
 namespace OpenTK.Platform.Linux
 {
-    internal class LinuxWindowInfo : EglWindowInfo
+    public class LinuxWindowInfo : EglWindowInfo
     {
         public int FD { get; private set; }
         public LinuxDisplay DisplayDevice { get; private set; }

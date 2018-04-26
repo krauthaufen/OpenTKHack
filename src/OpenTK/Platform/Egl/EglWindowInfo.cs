@@ -30,7 +30,7 @@ using OpenTK.Graphics;
 namespace OpenTK.Platform.Egl
 {
     // Holds information about an EGL window.
-    internal class EglWindowInfo : IWindowInfo
+    public class EglWindowInfo : IWindowInfo
     {
         private IntPtr surface;
         private bool disposed;

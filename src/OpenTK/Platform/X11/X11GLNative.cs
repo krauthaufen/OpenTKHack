@@ -306,6 +306,23 @@ namespace OpenTK.Platform.X11
             exists = true;
         }
 
+
+        public override void Invalidate()
+        {
+            XEvent evt = new XEvent();
+            var any = new XAnyEvent();
+            any.type = XEventName.GraphicsExpose;
+            any.display = window.Display;
+            any.send_event = true;
+
+            evt.AnyEvent = any;
+
+            using (new XLock(window.Display))
+            {
+                var a = Functions.XSendEvent(this.window.Display, this.Handle, true, EventMask.NoEventMask, ref evt);
+                Functions.XFlush(this.window.Display);
+            }
+        }
         /// <summary>
         /// Constructs and initializes a new X11GLNative window.
         /// Call CreateWindow to create the actual render window.
@@ -823,25 +840,33 @@ namespace OpenTK.Platform.X11
             return cursor;
         }
 
-        public override void ProcessEvents()
+        public void ProcessEvents(bool wait)
         {
             base.ProcessEvents();
             // Process all pending events
             while (Exists && window != null)
             {
-                using (new XLock(window.Display))
+                if (wait)
                 {
-                    if (!Functions.XCheckWindowEvent(window.Display, window.Handle, window.EventMask, ref e) &&
+                    Functions.XNextEvent(window.Display, ref e);
+                    wait = false;
+                }
+                else
+                {
+                    using (new XLock(window.Display))
+                    {
+                        if (!Functions.XCheckWindowEvent(window.Display, window.Handle, window.EventMask, ref e) &&
                         !Functions.XCheckTypedWindowEvent(window.Display, window.Handle, XEventName.ClientMessage, ref e) &&
                         !Functions.XCheckTypedWindowEvent(window.Display, window.Handle, XEventName.SelectionNotify, ref e))
-                    {
-                        if (_waitForEvent != (XEventName)0)
                         {
-                            continue;
-                        }
-                        else
-                        {
-                            break;
+                            if (_waitForEvent != (XEventName)0)
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                     }
                 }
@@ -1214,6 +1239,11 @@ namespace OpenTK.Platform.X11
             }
         }
 
+        public override void ProcessEvents()
+        {
+            this.ProcessEvents(true);
+        }
+
         public override Rectangle Bounds
         {
             get
@@ -1255,7 +1285,7 @@ namespace OpenTK.Platform.X11
                 }
 
                 _waitForEvent = XEventName.ConfigureNotify;
-                ProcessEvents();
+                ProcessEvents(false);
             }
         }
 
@@ -1285,7 +1315,7 @@ namespace OpenTK.Platform.X11
                     }
 
                     _waitForEvent = XEventName.ConfigureNotify;
-                    ProcessEvents();
+                    ProcessEvents(false);
                 }
             }
         }
@@ -1483,7 +1513,7 @@ namespace OpenTK.Platform.X11
                 // Note that OnWindowStateChanged is called inside
                 // ProcessEvents.
                 ChangeWindowState(value);
-                ProcessEvents();
+                ProcessEvents(false);
 
                 _previous_window_state = (value == OpenTK.WindowState.Fullscreen) ? OpenTK.WindowState.Fullscreen : OpenTK.WindowState.Normal;
             }
@@ -1627,7 +1657,7 @@ namespace OpenTK.Platform.X11
                     break;
             }
 
-            ProcessEvents();
+            ProcessEvents(false);
         }
 
         public override MouseCursor Cursor

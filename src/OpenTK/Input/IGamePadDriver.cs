@@ -1,6 +1,6 @@
 ﻿namespace OpenTK.Input
 {
-    internal interface IGamePadDriver
+    public interface IGamePadDriver
     {
 
         GamePadState GetState(int index);

@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\CreateWindow\CreateWindow.csproj" />
+    <ProjectReference Include="..\src\OpenTK\OpenTK.csproj" />
   </ItemGroup>
 
 </Project>

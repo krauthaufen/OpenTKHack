@@ -284,6 +284,11 @@ namespace OpenTK.Platform.MacOS
                     IntPtr.Zero));
         }
 
+        public override void Invalidate()
+        {
+            throw new NotImplementedException();
+        }
+
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]
         private delegate void WindowKeyDownDelegate(IntPtr self, IntPtr cmd, IntPtr notification);
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]

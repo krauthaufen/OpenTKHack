@@ -3,11 +3,36 @@
 open System
 open System.Threading
 open OpenTK.Platform
+open OpenTK
+open OpenTK.Graphics
+open OpenTK.Graphics.OpenGL4
+
+type MyGame() =
+    inherit GameWindow(1024, 768, GraphicsMode.Default, "hi")
+    let sw = System.Diagnostics.Stopwatch()
+    let mutable frameCount = 0
+
+    override x.OnRenderFrame(e) =
+        
+        GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f)
+        GL.Clear(ClearBufferMask.ColorBufferBit)
+        x.SwapBuffers()
+        frameCount <- frameCount + 1
+        if frameCount >= 20 then
+            let dt = sw.Elapsed.TotalSeconds / float frameCount
+            if dt > 0.0 then
+                x.Title <- sprintf "%.2ffps" (1.0 / dt)
+            frameCount <- 0
+            sw.Restart()
+
 
 [<EntryPoint>]
 let main argv =
+    use g = new MyGame()
+    g.VSync <- VSyncMode.Off
+    g.Run()
 
-    use win = Factory.Default.CreateNativeWindow(100,100,800,600,"title",OpenTK.GameWindowFlags.Fullscreen,OpenTK.DisplayDevice.Default)
+    use win = Factory.Default.CreateNativeWindow(100,100,800,600,"title",GraphicsMode.Default, OpenTK.GameWindowFlags.Fullscreen,OpenTK.DisplayDevice.Default)
 
     win.WindowInfo |> printfn "window info: %A"
     win.Visible <- true

@@ -35,7 +35,7 @@ using System.Drawing;
 namespace OpenTK.Platform.Linux
 {
     // Stores platform-specific information about a display
-    internal class LinuxDisplay
+    public class LinuxDisplay
     {
         public int FD;
         public IntPtr Connector;

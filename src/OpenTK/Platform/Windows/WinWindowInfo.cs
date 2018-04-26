@@ -31,7 +31,7 @@ namespace OpenTK.Platform.Windows
 {
     /// \internal
     /// <summary>Describes a win32 window.</summary>
-    internal sealed class WinWindowInfo : IWindowInfo
+    public sealed class WinWindowInfo : IWindowInfo
     {
         private IntPtr handle, dc;
         private bool disposed;

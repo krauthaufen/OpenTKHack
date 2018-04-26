@@ -25,7 +25,7 @@
 
 namespace OpenTK.Input
 {
-    internal interface IMouseDriver2
+    public interface IMouseDriver2
     {
         MouseState GetState();
         MouseState GetState(int index);

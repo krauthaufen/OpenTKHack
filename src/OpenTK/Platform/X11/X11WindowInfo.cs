@@ -30,7 +30,7 @@ namespace OpenTK.Platform.X11
 {
     /// \internal
     /// <summary>Describes an X11 window.</summary>
-    internal sealed class X11WindowInfo : IWindowInfo
+    public sealed class X11WindowInfo : IWindowInfo
     {
         private IntPtr handle, display;
         private XVisualInfo visualInfo;

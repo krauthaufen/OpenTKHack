@@ -34,7 +34,7 @@ namespace OpenTK.Platform.MacOS
     /// <summary>
     /// Describes a Cocoa window.
     /// </summary>
-    internal sealed class CocoaWindowInfo : IWindowInfo
+    public sealed class CocoaWindowInfo : IWindowInfo
     {
         private static readonly IntPtr selContentView = Selector.Get("contentView");
 

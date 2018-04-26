@@ -146,6 +146,8 @@ namespace OpenTK
         /// </summary>
         void Close();
 
+        void Invalidate();
+
         /// <summary>
         /// Processes pending window events.
         /// </summary>

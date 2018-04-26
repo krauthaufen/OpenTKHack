@@ -98,14 +98,14 @@ namespace OpenTK.Platform.Linux
 
     }
 
-    internal enum ModeConnection
+    public enum ModeConnection
     {
         Connected = 1,
         Disconnected = 2,
         Unknown = 3
     }
 
-    internal enum ModeSubPixel
+    public enum ModeSubPixel
     {
         Unknown = 1,
         HorizontalRgb = 2,
@@ -134,7 +134,7 @@ namespace OpenTK.Platform.Linux
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal unsafe struct ModeConnector
+    public unsafe struct ModeConnector
     {
         public int connector_id;
         public int encoder_id;
@@ -155,7 +155,7 @@ namespace OpenTK.Platform.Linux
         public int *encoders;
     }
 
-    internal struct ModeCrtc
+    public struct ModeCrtc
     {
         public int crtc_id;
         public int buffer_id;
@@ -168,7 +168,7 @@ namespace OpenTK.Platform.Linux
         public int gamma_size;
     }
 
-    internal struct ModeEncoder
+    public struct ModeEncoder
     {
         public int encoder_id;
         public int encoder_type;
@@ -178,7 +178,7 @@ namespace OpenTK.Platform.Linux
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal unsafe struct ModeInfo
+    public unsafe struct ModeInfo
     {
         public uint clock;
         public ushort hdisplay, hsync_start, hsync_end, htotal, hskew;
