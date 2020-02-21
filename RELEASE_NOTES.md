@@ -1,3 +1,6 @@
+### 3.0.17
+	* CocoaNativeWindow
+
 ### 3.0.16
 	* fixed Alt keys (were shift)
 
