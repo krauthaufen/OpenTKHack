@@ -141,6 +141,7 @@ namespace OpenTK.Platform.MacOS
         private IntPtr windowClass;
         private IntPtr trackingArea;
         private IntPtr current_icon_handle;
+        private IntPtr viewPtr;
         private bool disposed = false;
         private bool exists;
         private bool cursorVisible = true;
@@ -239,7 +240,7 @@ namespace OpenTK.Platform.MacOS
             // that overrides resetCursorRects (maybe there is
             // a better way to implement this override?)
             // Existing view:
-            IntPtr viewPtr = Cocoa.SendIntPtr(windowPtr, Selector.Get("contentView"));
+            viewPtr = Cocoa.SendIntPtr(windowPtr, Selector.Get("contentView"));
             if (viewPtr == IntPtr.Zero)
             {
                 Debug.Print("[Error] Failed to retrieve content view for window {0}.", windowPtr);
@@ -286,7 +287,12 @@ namespace OpenTK.Platform.MacOS
 
         public override void Invalidate()
         {
-            throw new NotImplementedException();
+            var rect = Cocoa.SendRect(viewPtr, selBounds);
+            Cocoa.SendIntPtr(
+                viewPtr,
+                Selector.Get("setNeedsDisplay:"),
+                rect
+            );
         }
 
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]
