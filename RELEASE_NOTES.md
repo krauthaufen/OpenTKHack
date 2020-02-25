@@ -1,3 +1,6 @@
+### 3.0.18
+    * netcoreapp3.1
+
 ### 3.0.17
 	* CocoaNativeWindow
 

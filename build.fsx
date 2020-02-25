@@ -137,6 +137,8 @@ Target "AssemblyInfo" (fun _ ->
     //    )
 )
 
+Environment.SetEnvironmentVariable("MSBUILD", @"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe")
+
 // Copies binaries from default VS location to expected bin folder
 // But keeps a subdirectory structure for each project in the
 // src folder to support multiple project outputs
@@ -173,6 +175,10 @@ Target "GenerateBindings" (fun _ ->
 // Build library & test project
 
 Target "Build" (fun _ ->
+    activeProjects
+    |> MSBuildRelease "" "Restore"
+    |> ignore
+
     activeProjects
     |> MSBuildRelease "" "Build"
     |> ignore

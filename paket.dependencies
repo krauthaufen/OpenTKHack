@@ -1,8 +1,4 @@
-version 5.132.4
-
 source https://nuget.org/api/v2
-
-#Open packages
 
 nuget CommandLineParser >= 2.1.1-beta
 nuget FSharp.Formatting
