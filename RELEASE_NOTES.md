@@ -1,3 +1,6 @@
+### 3.0.19
+    * fixed context creation profile mask and flags
+
 ### 3.0.18
     * netcoreapp3.1
 
