@@ -103,19 +103,36 @@ namespace OpenTK.Platform.Windows
 
                     // The second function should only be executed when the first one fails
                     // (e.g. when the monitor is disabled)
-                    if (Functions.EnumDisplaySettingsEx(dev1.DeviceName.ToString(), DisplayModeSettingsEnum.CurrentSettings, monitor_mode, 0) ||
+                    var firstChance = Functions.EnumDisplaySettingsEx(dev1.DeviceName.ToString(), DisplayModeSettingsEnum.CurrentSettings, monitor_mode, 0);
+
+                    if (firstChance ||
                         Functions.EnumDisplaySettingsEx(dev1.DeviceName.ToString(), DisplayModeSettingsEnum.RegistrySettings, monitor_mode, 0))
                     {
+                        if (!firstChance) Console.WriteLine("arrived via second chance: (registry)" + dev1.DeviceName.ToString());
+                        else Console.WriteLine("arrived via second chance: (current)" + dev1.DeviceName.ToString());
+
                         VerifyMode(dev1, monitor_mode);
 
                         float scale = GetScale(ref monitor_mode);
-                        opentk_dev_current_res = new DisplayResolution(
-                            (int)(monitor_mode.Position.X / scale), (int)(monitor_mode.Position.Y / scale),
-                            (int)(monitor_mode.PelsWidth / scale), (int)(monitor_mode.PelsHeight / scale),
-                            monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+                        var x = (int)(monitor_mode.Position.X / scale);
+                        var y = (int)(monitor_mode.Position.Y / scale);
+                        var width = (int)(monitor_mode.PelsWidth / scale);
+                        var height = (int)(monitor_mode.PelsHeight / scale);
+                        try
+                        {
+                            opentk_dev_current_res = new DisplayResolution(
+                               x, y,
+                               width, height,
+                               monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency
+                            );
 
-                        opentk_dev_primary =
-                            (dev1.StateFlags & DisplayDeviceStateFlags.PrimaryDevice) != DisplayDeviceStateFlags.None;
+                            opentk_dev_primary =
+                                (dev1.StateFlags & DisplayDeviceStateFlags.PrimaryDevice) != DisplayDeviceStateFlags.None;
+                        }
+                        catch (ArgumentException e)
+                        {
+                            Console.WriteLine("[OpenTK] DisplayResolution threw argument exception: {0}, ({1},{2},{3},{4},{5},{6})", e.Message, x, y, width, height, monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+                        }
                     }
 
                     opentk_dev_available_res.Clear();
@@ -125,12 +142,25 @@ namespace OpenTK.Platform.Windows
                         VerifyMode(dev1, monitor_mode);
 
                         float scale = GetScale(ref monitor_mode);
-                        DisplayResolution res = new DisplayResolution(
-                            (int)(monitor_mode.Position.X / scale), (int)(monitor_mode.Position.Y / scale),
-                            (int)(monitor_mode.PelsWidth / scale), (int)(monitor_mode.PelsHeight / scale),
-                            monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
 
-                        opentk_dev_available_res.Add(res);
+                        var x = (int)(monitor_mode.Position.X / scale);
+                        var y = (int)(monitor_mode.Position.Y / scale);
+                        var width = (int)(monitor_mode.PelsWidth / scale);
+                        var height = (int)(monitor_mode.PelsHeight / scale);
+
+                        try
+                        {
+                            DisplayResolution res = new DisplayResolution(
+                                (int)(monitor_mode.Position.X / scale), (int)(monitor_mode.Position.Y / scale),
+                                (int)(monitor_mode.PelsWidth / scale), (int)(monitor_mode.PelsHeight / scale),
+                                monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+
+                            opentk_dev_available_res.Add(res);
+                        }
+                        catch (ArgumentException e)
+                        {
+                            Console.WriteLine("[OpenTK] DisplayResolution threw argument exception: {0}, ({1},{2},{3},{4},{5},{6})", e.Message, x, y, width, height, monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+                        }
                     }
 
                     // Construct the OpenTK DisplayDevice through the accumulated parameters.
