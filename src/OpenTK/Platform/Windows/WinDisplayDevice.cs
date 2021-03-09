@@ -114,8 +114,8 @@ namespace OpenTK.Platform.Windows
                     if (firstChance ||
                         Functions.EnumDisplaySettingsEx(dev1.DeviceName, DisplayModeSettingsEnum.RegistrySettings, monitor_mode, 0))
                     {
-                        if (!firstChance) Console.WriteLine("arrived via second chance: (registry)" + dev1.DeviceName);
-                        else Console.WriteLine("arrived via second chance: (current)" + dev1.DeviceName);
+                        if (firstChance) Console.WriteLine("arrived via first chance: (current)" + dev1.DeviceName);
+                        else Console.WriteLine("arrived via second chance: (registry)" + dev1.DeviceName);
 
                         VerifyMode(dev1, monitor_mode);
 
