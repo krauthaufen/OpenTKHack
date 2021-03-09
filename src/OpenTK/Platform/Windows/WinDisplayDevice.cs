@@ -125,7 +125,7 @@ namespace OpenTK.Platform.Windows
                         var width = (int)(monitor_mode.PelsWidth / scale);
                         var height = (int)(monitor_mode.PelsHeight / scale);
 
-                        Console.WriteLine("Resolution: {0}x{1}", width, height);
+                        Console.WriteLine("Resolution: {0}x{1} Scale={2}", width, height, scale);
 
                         try
                         {
@@ -138,7 +138,7 @@ namespace OpenTK.Platform.Windows
                             opentk_dev_primary =
                                 (dev1.StateFlags & DisplayDeviceStateFlags.PrimaryDevice) != DisplayDeviceStateFlags.None;
                         }
-                        catch (ArgumentException e)
+                        catch (Exception e)
                         {
                             Console.WriteLine("[OpenTK] DisplayResolution threw argument exception: {0}, ({1},{2},{3},{4},{5},{6})", e.Message, x, y, width, height, monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
                         }
@@ -146,7 +146,7 @@ namespace OpenTK.Platform.Windows
 
                     opentk_dev_available_res.Clear();
                     mode_count = 0;
-                    while (Functions.EnumDisplaySettingsEx(dev1.DeviceName.ToString(), mode_count++, monitor_mode, 0))
+                    while (Functions.EnumDisplaySettingsEx(dev1.DeviceName, mode_count++, monitor_mode, 0))
                     {
                         VerifyMode(dev1, monitor_mode);
 
@@ -166,11 +166,13 @@ namespace OpenTK.Platform.Windows
 
                             opentk_dev_available_res.Add(res);
                         }
-                        catch (ArgumentException e)
+                        catch (Exception e)
                         {
                             Console.WriteLine("[OpenTK] DisplayResolution threw argument exception: {0}, ({1},{2},{3},{4},{5},{6})", e.Message, x, y, width, height, monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
                         }
                     }
+
+                    Console.WriteLine("Diplay Mode Enumeration Complete! Count={0}", mode_count - 1);
 
                     // Construct the OpenTK DisplayDevice through the accumulated parameters.
                     // The constructor will automatically add the DisplayDevice to the list
@@ -203,6 +205,8 @@ namespace OpenTK.Platform.Windows
                     Debug.Print("DisplayDevice {0} ({1}) supports {2} resolutions.",
                         device_count, opentk_dev.IsPrimary ? "primary" : "secondary", opentk_dev.AvailableResolutions.Count);
                 }
+
+                Console.WriteLine("Diplay Device Enumeration Complete! Count={0}", device_count - 1);
             }
         }
 
