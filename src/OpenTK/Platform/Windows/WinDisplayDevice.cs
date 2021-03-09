@@ -72,13 +72,13 @@ namespace OpenTK.Platform.Windows
 
         public void RefreshDisplayDevices()
         {
-            lock (display_lock)
+            lock (this.display_lock)
             {
                 // Store an array of the current available DisplayDevice objects.
                 // This is needed to preserve the original resolution.
-                DisplayDevice[] previousDevices = AvailableDevices.ToArray();
+                DisplayDevice[] previousDevices = this.AvailableDevices.ToArray();
 
-                AvailableDevices.Clear();
+                this.AvailableDevices.Clear();
 
                 // We save all necessary parameters in temporary variables
                 // and construct the device when every needed detail is available.
@@ -94,7 +94,7 @@ namespace OpenTK.Platform.Windows
                 WindowsDisplayDevice dev1 = new WindowsDisplayDevice();
                 while (Functions.EnumDisplayDevices(null, device_count++, dev1, 0))
                 {
-                    if ((dev1.StateFlags & DisplayDeviceStateFlags.AttachedToDesktop) == DisplayDeviceStateFlags.None)
+                    if ((dev1.StateFlags & DisplayDeviceStateFlags.AttachedToDesktop) == DisplayDeviceStateFlags.None) // NOTE: AttachedToDesktop is identical to Active
                     {
                         continue;
                     }
@@ -103,16 +103,28 @@ namespace OpenTK.Platform.Windows
 
                     // The second function should only be executed when the first one fails
                     // (e.g. when the monitor is disabled)
-                    if (Functions.EnumDisplaySettingsEx(dev1.DeviceName.ToString(), DisplayModeSettingsEnum.CurrentSettings, monitor_mode, 0) ||
-                        Functions.EnumDisplaySettingsEx(dev1.DeviceName.ToString(), DisplayModeSettingsEnum.RegistrySettings, monitor_mode, 0))
+                    if (Functions.EnumDisplaySettingsEx(dev1.DeviceName, DisplayModeSettingsEnum.CurrentSettings, monitor_mode, 0) ||
+                        Functions.EnumDisplaySettingsEx(dev1.DeviceName, DisplayModeSettingsEnum.RegistrySettings, monitor_mode, 0))
                     {
                         VerifyMode(dev1, monitor_mode);
 
-                        float scale = GetScale(ref monitor_mode);
-                        opentk_dev_current_res = new DisplayResolution(
-                            (int)(monitor_mode.Position.X / scale), (int)(monitor_mode.Position.Y / scale),
-                            (int)(monitor_mode.PelsWidth / scale), (int)(monitor_mode.PelsHeight / scale),
-                            monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+                        float scale = this.GetScale(ref monitor_mode);
+                        var x = (int)(monitor_mode.Position.X / scale);
+                        var y = (int)(monitor_mode.Position.Y / scale);
+                        var width = (int)(monitor_mode.PelsWidth / scale);
+                        var height = (int)(monitor_mode.PelsHeight / scale);
+
+                        try
+                        {
+                            opentk_dev_current_res = new DisplayResolution(x, y, width, height, monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+                        }
+                        catch (ArgumentOutOfRangeException e)
+                        {
+                            Debug.Print("[OpenTK] Invaild display mode on {0}: {1}, ({2},{3},{4},{5},{6},{7})", dev1.DeviceName, e.Message, x, y, width, height, monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+
+                            // ingnore this output device -> continue with EnumDisplayDevices
+                            continue;
+                        }
 
                         opentk_dev_primary =
                             (dev1.StateFlags & DisplayDeviceStateFlags.PrimaryDevice) != DisplayDeviceStateFlags.None;
@@ -120,17 +132,29 @@ namespace OpenTK.Platform.Windows
 
                     opentk_dev_available_res.Clear();
                     mode_count = 0;
-                    while (Functions.EnumDisplaySettingsEx(dev1.DeviceName.ToString(), mode_count++, monitor_mode, 0))
+                    while (Functions.EnumDisplaySettingsEx(dev1.DeviceName, mode_count++, monitor_mode, 0))
                     {
                         VerifyMode(dev1, monitor_mode);
 
-                        float scale = GetScale(ref monitor_mode);
-                        DisplayResolution res = new DisplayResolution(
-                            (int)(monitor_mode.Position.X / scale), (int)(monitor_mode.Position.Y / scale),
-                            (int)(monitor_mode.PelsWidth / scale), (int)(monitor_mode.PelsHeight / scale),
-                            monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+                        float scale = this.GetScale(ref monitor_mode);
+                        var x = (int)(monitor_mode.Position.X / scale);
+                        var y = (int)(monitor_mode.Position.Y / scale);
+                        var width = (int)(monitor_mode.PelsWidth / scale);
+                        var height = (int)(monitor_mode.PelsHeight / scale);
 
-                        opentk_dev_available_res.Add(res);
+                        try
+                        {
+                            var res = new DisplayResolution(x, y, width, height, monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+
+                            opentk_dev_available_res.Add(res);
+                        }
+                        catch (ArgumentOutOfRangeException e)
+                        {
+                            Debug.Print("[OpenTK] Invaild display mode on {0}: {1}, ({2},{3},{4},{5},{6},{7})", dev1.DeviceName, e.Message, x, y, width, height, monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
+
+                            // ingnore this mode for list of available modes -> continue with EnumDisplaySettingsEx
+                            continue;
+                        }
                     }
 
                     // Construct the OpenTK DisplayDevice through the accumulated parameters.
@@ -154,11 +178,11 @@ namespace OpenTK.Platform.Windows
                         }
                     }
 
-                    AvailableDevices.Add(opentk_dev);
+                    this.AvailableDevices.Add(opentk_dev);
 
                     if (opentk_dev_primary)
                     {
-                        Primary = opentk_dev;
+                        this.Primary = opentk_dev;
                     }
 
                     Debug.Print("DisplayDevice {0} ({1}) supports {2} resolutions.",
@@ -172,8 +196,12 @@ namespace OpenTK.Platform.Windows
             float scale = 1.0f;
             if ((monitor_mode.Fields & Constants.DM_LOGPIXELS) != 0)
             {
-                scale = monitor_mode.LogPixels / 96.0f;
+                if (monitor_mode.LogPixels > 0)
+                    scale = monitor_mode.LogPixels / 96.0f;
+                else
+                    Debug.Print("[Warning] DisplayDevice '{0}' reported LogPixels of 0 or less", monitor_mode.DeviceName);
             }
+
             return scale;
         }
 
@@ -183,7 +211,7 @@ namespace OpenTK.Platform.Windows
             {
                 Debug.Print(
                     "[Warning] DisplayDevice '{0}' reported a mode with 0 bpp. Please create a bug report at https://github.com/opentk/opentk/issues",
-                    device.DeviceName.ToString());
+                    device.DeviceName);
                 mode.BitsPerPel = 32;
             }
         }
