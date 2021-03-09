@@ -94,6 +94,12 @@ namespace OpenTK.Platform.Windows
                 WindowsDisplayDevice dev1 = new WindowsDisplayDevice();
                 while (Functions.EnumDisplayDevices(null, device_count++, dev1, 0))
                 {
+                    Console.WriteLine(String.Format("Device: {0} Primary={1} AttachedToDesktop={2} Active {3}", 
+                        dev1.DeviceName, 
+                        (dev1.StateFlags & DisplayDeviceStateFlags.PrimaryDevice) != DisplayDeviceStateFlags.None,
+                        (dev1.StateFlags & DisplayDeviceStateFlags.AttachedToDesktop) != DisplayDeviceStateFlags.None,
+                        (dev1.StateFlags & DisplayDeviceStateFlags.Active) != DisplayDeviceStateFlags.None));
+
                     if ((dev1.StateFlags & DisplayDeviceStateFlags.AttachedToDesktop) == DisplayDeviceStateFlags.None)
                     {
                         continue;
@@ -103,13 +109,13 @@ namespace OpenTK.Platform.Windows
 
                     // The second function should only be executed when the first one fails
                     // (e.g. when the monitor is disabled)
-                    var firstChance = Functions.EnumDisplaySettingsEx(dev1.DeviceName.ToString(), DisplayModeSettingsEnum.CurrentSettings, monitor_mode, 0);
+                    var firstChance = Functions.EnumDisplaySettingsEx(dev1.DeviceName, DisplayModeSettingsEnum.CurrentSettings, monitor_mode, 0);
 
                     if (firstChance ||
-                        Functions.EnumDisplaySettingsEx(dev1.DeviceName.ToString(), DisplayModeSettingsEnum.RegistrySettings, monitor_mode, 0))
+                        Functions.EnumDisplaySettingsEx(dev1.DeviceName, DisplayModeSettingsEnum.RegistrySettings, monitor_mode, 0))
                     {
-                        if (!firstChance) Console.WriteLine("arrived via second chance: (registry)" + dev1.DeviceName.ToString());
-                        else Console.WriteLine("arrived via second chance: (current)" + dev1.DeviceName.ToString());
+                        if (!firstChance) Console.WriteLine("arrived via second chance: (registry)" + dev1.DeviceName);
+                        else Console.WriteLine("arrived via second chance: (current)" + dev1.DeviceName);
 
                         VerifyMode(dev1, monitor_mode);
 
@@ -118,6 +124,9 @@ namespace OpenTK.Platform.Windows
                         var y = (int)(monitor_mode.Position.Y / scale);
                         var width = (int)(monitor_mode.PelsWidth / scale);
                         var height = (int)(monitor_mode.PelsHeight / scale);
+
+                        Console.WriteLine("Resolution: {0}x{1}", width, height);
+
                         try
                         {
                             opentk_dev_current_res = new DisplayResolution(
