@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net471;netcoreapp3.1</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>bin\Debug</OutputPath>
