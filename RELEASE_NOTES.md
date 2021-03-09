@@ -1,3 +1,6 @@
+### 3.0.20
+    * improved error handling in output device enumeration
+
 ### 3.0.19
     * fixed context creation profile mask and flags
 
