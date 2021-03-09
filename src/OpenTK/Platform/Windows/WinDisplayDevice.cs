@@ -125,7 +125,7 @@ namespace OpenTK.Platform.Windows
                         var width = (int)(monitor_mode.PelsWidth / scale);
                         var height = (int)(monitor_mode.PelsHeight / scale);
 
-                        Console.WriteLine("Resolution: {0}x{1} Scale={2}", width, height, scale);
+                        Console.WriteLine("Resolution: {0}x{1} Scale={2}", monitor_mode.PelsWidth, monitor_mode.PelsHeight, scale);
 
                         try
                         {
@@ -142,6 +142,12 @@ namespace OpenTK.Platform.Windows
                         {
                             Console.WriteLine("[OpenTK] DisplayResolution threw argument exception: {0}, ({1},{2},{3},{4},{5},{6})", e.Message, x, y, width, height, monitor_mode.BitsPerPel, monitor_mode.DisplayFrequency);
                         }
+                    }
+
+                    if (opentk_dev_current_res == null)
+                    {
+                        Console.WriteLine("Skipping invalid device!");
+                        continue;
                     }
 
                     opentk_dev_available_res.Clear();
@@ -204,6 +210,8 @@ namespace OpenTK.Platform.Windows
 
                     Debug.Print("DisplayDevice {0} ({1}) supports {2} resolutions.",
                         device_count, opentk_dev.IsPrimary ? "primary" : "secondary", opentk_dev.AvailableResolutions.Count);
+
+                    opentk_dev_current_res = null;
                 }
 
                 Console.WriteLine("Diplay Device Enumeration Complete! Count={0}", device_count - 1);
