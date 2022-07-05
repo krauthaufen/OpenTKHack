@@ -114,6 +114,10 @@ namespace OpenTK.Graphics.ES11
         /// </summary>
         QueryDepthPassEventBitAmd = ((int)0x00000001),
         /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_BASIC_BIT_KHR = 0x00000001
+        /// </summary>
+        SubgroupFeatureBasicBitKhr = ((int)0x00000001),
+        /// <summary>
         /// Original was GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001
         /// </summary>
         SyncFlushCommandsBit = ((int)0x00000001),
@@ -186,6 +190,10 @@ namespace OpenTK.Graphics.ES11
         /// </summary>
         QueryDepthFailEventBitAmd = ((int)0x00000002),
         /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_VOTE_BIT_KHR = 0x00000002
+        /// </summary>
+        SubgroupFeatureVoteBitKhr = ((int)0x00000002),
+        /// <summary>
         /// Original was GL_COLOR_BUFFER_BIT2_QCOM = 0x00000004
         /// </summary>
         ColorBufferBit2Qcom = ((int)0x00000004),
@@ -218,6 +226,10 @@ namespace OpenTK.Graphics.ES11
         /// </summary>
         QueryStencilFailEventBitAmd = ((int)0x00000004),
         /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_ARITHMETIC_BIT_KHR = 0x00000004
+        /// </summary>
+        SubgroupFeatureArithmeticBitKhr = ((int)0x00000004),
+        /// <summary>
         /// Original was GL_UNIFORM_BARRIER_BIT = 0x00000004
         /// </summary>
         UniformBarrierBit = ((int)0x00000004),
@@ -245,6 +257,10 @@ namespace OpenTK.Graphics.ES11
         /// Original was GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD = 0x00000008
         /// </summary>
         QueryDepthBoundsFailEventBitAmd = ((int)0x00000008),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_BALLOT_BIT_KHR = 0x00000008
+        /// </summary>
+        SubgroupFeatureBallotBitKhr = ((int)0x00000008),
         /// <summary>
         /// Original was GL_TESS_CONTROL_SHADER_BIT = 0x00000008
         /// </summary>
@@ -282,6 +298,10 @@ namespace OpenTK.Graphics.ES11
         /// </summary>
         ShaderGlobalAccessBarrierBitNv = ((int)0x00000010),
         /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_SHUFFLE_BIT_KHR = 0x00000010
+        /// </summary>
+        SubgroupFeatureShuffleBitKhr = ((int)0x00000010),
+        /// <summary>
         /// Original was GL_TESS_EVALUATION_SHADER_BIT = 0x00000010
         /// </summary>
         TessEvaluationShaderBit = ((int)0x00000010),
@@ -314,6 +334,10 @@ namespace OpenTK.Graphics.ES11
         /// </summary>
         ShaderImageAccessBarrierBitExt = ((int)0x00000020),
         /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT_KHR = 0x00000020
+        /// </summary>
+        SubgroupFeatureShuffleRelativeBitKhr = ((int)0x00000020),
+        /// <summary>
         /// Original was GL_COLOR_BUFFER_BIT6_QCOM = 0x00000040
         /// </summary>
         ColorBufferBit6Qcom = ((int)0x00000040),
@@ -330,6 +354,14 @@ namespace OpenTK.Graphics.ES11
         /// </summary>
         LightingBit = ((int)0x00000040),
         /// <summary>
+        /// Original was GL_MESH_SHADER_BIT_NV = 0x00000040
+        /// </summary>
+        MeshShaderBitNv = ((int)0x00000040),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_CLUSTERED_BIT_KHR = 0x00000040
+        /// </summary>
+        SubgroupFeatureClusteredBitKhr = ((int)0x00000040),
+        /// <summary>
         /// Original was GL_COLOR_BUFFER_BIT7_QCOM = 0x00000080
         /// </summary>
         ColorBufferBit7Qcom = ((int)0x00000080),
@@ -345,6 +377,14 @@ namespace OpenTK.Graphics.ES11
         /// Original was GL_PIXEL_BUFFER_BARRIER_BIT_EXT = 0x00000080
         /// </summary>
         PixelBufferBarrierBitExt = ((int)0x00000080),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_QUAD_BIT_KHR = 0x00000080
+        /// </summary>
+        SubgroupFeatureQuadBitKhr = ((int)0x00000080),
+        /// <summary>
+        /// Original was GL_TASK_SHADER_BIT_NV = 0x00000080
+        /// </summary>
+        TaskShaderBitNv = ((int)0x00000080),
         /// <summary>
         /// Original was GL_DEPTH_BUFFER_BIT = 0x00000100
         /// </summary>
@@ -8998,6 +9038,10 @@ namespace OpenTK.Graphics.ES11
         /// </summary>
         ClearTexture = ((int)0x9365),
         /// <summary>
+        /// Original was GL_REPRESENTATIVE_FRAGMENT_TEST_NV = 0x937F
+        /// </summary>
+        RepresentativeFragmentTestNv = ((int)0x937F),
+        /// <summary>
         /// Original was GL_NUM_SAMPLE_COUNTS = 0x9380
         /// </summary>
         NumSampleCounts = ((int)0x9380),
@@ -9013,6 +9057,30 @@ namespace OpenTK.Graphics.ES11
         /// Original was GL_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_EXT = 0x9531
         /// </summary>
         LayoutDepthAttachmentStencilReadOnlyExt = ((int)0x9531),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SIZE_KHR = 0x9532
+        /// </summary>
+        SubgroupSizeKhr = ((int)0x9532),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533
+        /// </summary>
+        SubgroupSupportedStagesKhr = ((int)0x9533),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_FEATURES_KHR = 0x9534
+        /// </summary>
+        SubgroupSupportedFeaturesKhr = ((int)0x9534),
+        /// <summary>
+        /// Original was GL_SUBGROUP_QUAD_ALL_STAGES_KHR = 0x9535
+        /// </summary>
+        SubgroupQuadAllStagesKhr = ((int)0x9535),
+        /// <summary>
+        /// Original was GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555
+        /// </summary>
+        ScissorTestExclusiveNv = ((int)0x9555),
+        /// <summary>
+        /// Original was GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556
+        /// </summary>
+        ScissorBoxExclusiveNv = ((int)0x9556),
         /// <summary>
         /// Original was GL_TEXTURE_TILING_EXT = 0x9580
         /// </summary>
@@ -9105,6 +9173,14 @@ namespace OpenTK.Graphics.ES11
         /// Original was GL_PROTECTED_MEMORY_OBJECT_EXT = 0x959B
         /// </summary>
         ProtectedMemoryObjectExt = ((int)0x959B),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1
+        /// </summary>
+        ShadingRateImagePerPrimitiveNv = ((int)0x95B1),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2
+        /// </summary>
+        ShadingRateImagePaletteCountNv = ((int)0x95B2),
         /// <summary>
         /// Original was GL_FRAMEBUFFER_FETCH_NONCOHERENT_QCOM = 0x96A2
         /// </summary>
@@ -12091,6 +12167,42 @@ namespace OpenTK.Graphics.ES11
         /// Original was GL_FRAGMENT_LIGHT7_SGIX = 0x8413
         /// </summary>
         FragmentLight7Sgix = ((int)0x8413),
+        /// <summary>
+        /// Original was GL_REPRESENTATIVE_FRAGMENT_TEST_NV = 0x937F
+        /// </summary>
+        RepresentativeFragmentTestNv = ((int)0x937F),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SIZE_KHR = 0x9532
+        /// </summary>
+        SubgroupSizeKhr = ((int)0x9532),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533
+        /// </summary>
+        SubgroupSupportedStagesKhr = ((int)0x9533),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_FEATURES_KHR = 0x9534
+        /// </summary>
+        SubgroupSupportedFeaturesKhr = ((int)0x9534),
+        /// <summary>
+        /// Original was GL_SUBGROUP_QUAD_ALL_STAGES_KHR = 0x9535
+        /// </summary>
+        SubgroupQuadAllStagesKhr = ((int)0x9535),
+        /// <summary>
+        /// Original was GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555
+        /// </summary>
+        ScissorTestExclusiveNv = ((int)0x9555),
+        /// <summary>
+        /// Original was GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556
+        /// </summary>
+        ScissorBoxExclusiveNv = ((int)0x9556),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1
+        /// </summary>
+        ShadingRateImagePerPrimitiveNv = ((int)0x95B1),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2
+        /// </summary>
+        ShadingRateImagePaletteCountNv = ((int)0x95B2),
     }
 
     /// <summary>
@@ -15270,6 +15382,34 @@ namespace OpenTK.Graphics.ES11
         /// </summary>
         UnpackSubsampleRateSgix = ((int)0x85A1),
         /// <summary>
+        /// Original was GL_REPRESENTATIVE_FRAGMENT_TEST_NV = 0x937F
+        /// </summary>
+        RepresentativeFragmentTestNv = ((int)0x937F),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SIZE_KHR = 0x9532
+        /// </summary>
+        SubgroupSizeKhr = ((int)0x9532),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533
+        /// </summary>
+        SubgroupSupportedStagesKhr = ((int)0x9533),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_FEATURES_KHR = 0x9534
+        /// </summary>
+        SubgroupSupportedFeaturesKhr = ((int)0x9534),
+        /// <summary>
+        /// Original was GL_SUBGROUP_QUAD_ALL_STAGES_KHR = 0x9535
+        /// </summary>
+        SubgroupQuadAllStagesKhr = ((int)0x9535),
+        /// <summary>
+        /// Original was GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555
+        /// </summary>
+        ScissorTestExclusiveNv = ((int)0x9555),
+        /// <summary>
+        /// Original was GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556
+        /// </summary>
+        ScissorBoxExclusiveNv = ((int)0x9556),
+        /// <summary>
         /// Original was GL_DEVICE_UUID_EXT = 0x9597
         /// </summary>
         DeviceUuidExt = ((int)0x9597),
@@ -15285,6 +15425,14 @@ namespace OpenTK.Graphics.ES11
         /// Original was GL_DEVICE_NODE_MASK_EXT = 0x959A
         /// </summary>
         DeviceNodeMaskExt = ((int)0x959A),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1
+        /// </summary>
+        ShadingRateImagePerPrimitiveNv = ((int)0x95B1),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2
+        /// </summary>
+        ShadingRateImagePaletteCountNv = ((int)0x95B2),
     }
 
     /// <summary>
@@ -22846,6 +22994,45 @@ namespace OpenTK.Graphics.ES11
     /// <summary>
     /// Not used directly.
     /// </summary>
+    public enum SubgroupSupportedFeatures : int
+    {
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_BASIC_BIT_KHR = 0x00000001
+        /// </summary>
+        SubgroupFeatureBasicBitKhr = ((int)0x00000001),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_VOTE_BIT_KHR = 0x00000002
+        /// </summary>
+        SubgroupFeatureVoteBitKhr = ((int)0x00000002),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_ARITHMETIC_BIT_KHR = 0x00000004
+        /// </summary>
+        SubgroupFeatureArithmeticBitKhr = ((int)0x00000004),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_BALLOT_BIT_KHR = 0x00000008
+        /// </summary>
+        SubgroupFeatureBallotBitKhr = ((int)0x00000008),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_SHUFFLE_BIT_KHR = 0x00000010
+        /// </summary>
+        SubgroupFeatureShuffleBitKhr = ((int)0x00000010),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT_KHR = 0x00000020
+        /// </summary>
+        SubgroupFeatureShuffleRelativeBitKhr = ((int)0x00000020),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_CLUSTERED_BIT_KHR = 0x00000040
+        /// </summary>
+        SubgroupFeatureClusteredBitKhr = ((int)0x00000040),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_QUAD_BIT_KHR = 0x00000080
+        /// </summary>
+        SubgroupFeatureQuadBitKhr = ((int)0x00000080),
+    }
+
+    /// <summary>
+    /// Not used directly.
+    /// </summary>
     public enum SubroutineParameterName : int
     {
         /// <summary>
@@ -24270,6 +24457,14 @@ namespace OpenTK.Graphics.ES11
         /// Original was GL_COMPUTE_SHADER_BIT = 0x00000020
         /// </summary>
         ComputeShaderBit = ((int)0x00000020),
+        /// <summary>
+        /// Original was GL_MESH_SHADER_BIT_NV = 0x00000040
+        /// </summary>
+        MeshShaderBitNv = ((int)0x00000040),
+        /// <summary>
+        /// Original was GL_TASK_SHADER_BIT_NV = 0x00000080
+        /// </summary>
+        TaskShaderBitNv = ((int)0x00000080),
         /// <summary>
         /// Original was GL_ALL_SHADER_BITS = 0xFFFFFFFF
         /// </summary>

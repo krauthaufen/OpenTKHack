@@ -1,3 +1,6 @@
+### TODO
+    * updated generator signatures/overrides
+
 ### 3.0.20
     * improved error handling in output device enumeration
 
@@ -26,7 +29,7 @@
 	* Support for OpenGL 4.6
 	* Replaced JoystickButton enum with simple long. (breaking API change)
 	* Increase available joystick buttons to 64.
-	* Add support for OpenGL ES3 through Angle + DIrect3D.
+	* Add support for OpenGL ES3 through Angle + Direct3D.
 	* Fix 2 crashes on android
 	* Move to built-in System.Diagnostics.Debug for Android + iOS
 	* Fix for certain joysticks returning invalid HID pages.

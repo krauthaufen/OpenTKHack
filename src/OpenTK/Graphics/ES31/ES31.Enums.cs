@@ -460,7 +460,7 @@ namespace OpenTK.Graphics.ES31
     }
 
     /// <summary>
-    /// Used in GL.Amd.GetPerfMonitorCounterData, GL.Amd.GetPerfMonitorCounterInfo and 371 other functions
+    /// Used in GL.Amd.GetPerfMonitorCounterData, GL.Amd.GetPerfMonitorCounterInfo and 376 other functions
     /// </summary>
     public enum All : int
     {
@@ -536,6 +536,10 @@ namespace OpenTK.Graphics.ES31
         /// Original was GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD = 0x00000001
         /// </summary>
         QueryDepthPassEventBitAmd = ((int)0x00000001),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_BASIC_BIT_KHR = 0x00000001
+        /// </summary>
+        SubgroupFeatureBasicBitKhr = ((int)0x00000001),
         /// <summary>
         /// Original was GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001
         /// </summary>
@@ -617,6 +621,10 @@ namespace OpenTK.Graphics.ES31
         /// </summary>
         QueryDepthFailEventBitAmd = ((int)0x00000002),
         /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_VOTE_BIT_KHR = 0x00000002
+        /// </summary>
+        SubgroupFeatureVoteBitKhr = ((int)0x00000002),
+        /// <summary>
         /// Original was GL_COLOR_BUFFER_BIT2_QCOM = 0x00000004
         /// </summary>
         ColorBufferBit2Qcom = ((int)0x00000004),
@@ -653,6 +661,10 @@ namespace OpenTK.Graphics.ES31
         /// </summary>
         QueryStencilFailEventBitAmd = ((int)0x00000004),
         /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_ARITHMETIC_BIT_KHR = 0x00000004
+        /// </summary>
+        SubgroupFeatureArithmeticBitKhr = ((int)0x00000004),
+        /// <summary>
         /// Original was GL_UNIFORM_BARRIER_BIT = 0x00000004
         /// </summary>
         UniformBarrierBit = ((int)0x00000004),
@@ -684,6 +696,10 @@ namespace OpenTK.Graphics.ES31
         /// Original was GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD = 0x00000008
         /// </summary>
         QueryDepthBoundsFailEventBitAmd = ((int)0x00000008),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_BALLOT_BIT_KHR = 0x00000008
+        /// </summary>
+        SubgroupFeatureBallotBitKhr = ((int)0x00000008),
         /// <summary>
         /// Original was GL_TESS_CONTROL_SHADER_BIT = 0x00000008
         /// </summary>
@@ -720,6 +736,10 @@ namespace OpenTK.Graphics.ES31
         /// Original was GL_SHADER_GLOBAL_ACCESS_BARRIER_BIT_NV = 0x00000010
         /// </summary>
         ShaderGlobalAccessBarrierBitNv = ((int)0x00000010),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_SHUFFLE_BIT_KHR = 0x00000010
+        /// </summary>
+        SubgroupFeatureShuffleBitKhr = ((int)0x00000010),
         /// <summary>
         /// Original was GL_TESS_EVALUATION_SHADER_BIT = 0x00000010
         /// </summary>
@@ -761,6 +781,10 @@ namespace OpenTK.Graphics.ES31
         /// </summary>
         ShaderImageAccessBarrierBitExt = ((int)0x00000020),
         /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT_KHR = 0x00000020
+        /// </summary>
+        SubgroupFeatureShuffleRelativeBitKhr = ((int)0x00000020),
+        /// <summary>
         /// Original was GL_COLOR_BUFFER_BIT6_QCOM = 0x00000040
         /// </summary>
         ColorBufferBit6Qcom = ((int)0x00000040),
@@ -781,6 +805,14 @@ namespace OpenTK.Graphics.ES31
         /// </summary>
         LightingBit = ((int)0x00000040),
         /// <summary>
+        /// Original was GL_MESH_SHADER_BIT_NV = 0x00000040
+        /// </summary>
+        MeshShaderBitNv = ((int)0x00000040),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_CLUSTERED_BIT_KHR = 0x00000040
+        /// </summary>
+        SubgroupFeatureClusteredBitKhr = ((int)0x00000040),
+        /// <summary>
         /// Original was GL_COLOR_BUFFER_BIT7_QCOM = 0x00000080
         /// </summary>
         ColorBufferBit7Qcom = ((int)0x00000080),
@@ -800,6 +832,14 @@ namespace OpenTK.Graphics.ES31
         /// Original was GL_PIXEL_BUFFER_BARRIER_BIT_EXT = 0x00000080
         /// </summary>
         PixelBufferBarrierBitExt = ((int)0x00000080),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_QUAD_BIT_KHR = 0x00000080
+        /// </summary>
+        SubgroupFeatureQuadBitKhr = ((int)0x00000080),
+        /// <summary>
+        /// Original was GL_TASK_SHADER_BIT_NV = 0x00000080
+        /// </summary>
+        TaskShaderBitNv = ((int)0x00000080),
         /// <summary>
         /// Original was GL_DEPTH_BUFFER_BIT = 0x00000100
         /// </summary>
@@ -10305,6 +10345,70 @@ namespace OpenTK.Graphics.ES31
         /// </summary>
         MaxProgramTextureGatherOffset = ((int)0x8E5F),
         /// <summary>
+        /// Original was GL_MAX_MESH_UNIFORM_BLOCKS_NV = 0x8E60
+        /// </summary>
+        MaxMeshUniformBlocksNv = ((int)0x8E60),
+        /// <summary>
+        /// Original was GL_MAX_MESH_TEXTURE_IMAGE_UNITS_NV = 0x8E61
+        /// </summary>
+        MaxMeshTextureImageUnitsNv = ((int)0x8E61),
+        /// <summary>
+        /// Original was GL_MAX_MESH_IMAGE_UNIFORMS_NV = 0x8E62
+        /// </summary>
+        MaxMeshImageUniformsNv = ((int)0x8E62),
+        /// <summary>
+        /// Original was GL_MAX_MESH_UNIFORM_COMPONENTS_NV = 0x8E63
+        /// </summary>
+        MaxMeshUniformComponentsNv = ((int)0x8E63),
+        /// <summary>
+        /// Original was GL_MAX_MESH_ATOMIC_COUNTER_BUFFERS_NV = 0x8E64
+        /// </summary>
+        MaxMeshAtomicCounterBuffersNv = ((int)0x8E64),
+        /// <summary>
+        /// Original was GL_MAX_MESH_ATOMIC_COUNTERS_NV = 0x8E65
+        /// </summary>
+        MaxMeshAtomicCountersNv = ((int)0x8E65),
+        /// <summary>
+        /// Original was GL_MAX_MESH_SHADER_STORAGE_BLOCKS_NV = 0x8E66
+        /// </summary>
+        MaxMeshShaderStorageBlocksNv = ((int)0x8E66),
+        /// <summary>
+        /// Original was GL_MAX_COMBINED_MESH_UNIFORM_COMPONENTS_NV = 0x8E67
+        /// </summary>
+        MaxCombinedMeshUniformComponentsNv = ((int)0x8E67),
+        /// <summary>
+        /// Original was GL_MAX_TASK_UNIFORM_BLOCKS_NV = 0x8E68
+        /// </summary>
+        MaxTaskUniformBlocksNv = ((int)0x8E68),
+        /// <summary>
+        /// Original was GL_MAX_TASK_TEXTURE_IMAGE_UNITS_NV = 0x8E69
+        /// </summary>
+        MaxTaskTextureImageUnitsNv = ((int)0x8E69),
+        /// <summary>
+        /// Original was GL_MAX_TASK_IMAGE_UNIFORMS_NV = 0x8E6A
+        /// </summary>
+        MaxTaskImageUniformsNv = ((int)0x8E6A),
+        /// <summary>
+        /// Original was GL_MAX_TASK_UNIFORM_COMPONENTS_NV = 0x8E6B
+        /// </summary>
+        MaxTaskUniformComponentsNv = ((int)0x8E6B),
+        /// <summary>
+        /// Original was GL_MAX_TASK_ATOMIC_COUNTER_BUFFERS_NV = 0x8E6C
+        /// </summary>
+        MaxTaskAtomicCounterBuffersNv = ((int)0x8E6C),
+        /// <summary>
+        /// Original was GL_MAX_TASK_ATOMIC_COUNTERS_NV = 0x8E6D
+        /// </summary>
+        MaxTaskAtomicCountersNv = ((int)0x8E6D),
+        /// <summary>
+        /// Original was GL_MAX_TASK_SHADER_STORAGE_BLOCKS_NV = 0x8E6E
+        /// </summary>
+        MaxTaskShaderStorageBlocksNv = ((int)0x8E6E),
+        /// <summary>
+        /// Original was GL_MAX_COMBINED_TASK_UNIFORM_COMPONENTS_NV = 0x8E6F
+        /// </summary>
+        MaxCombinedTaskUniformComponentsNv = ((int)0x8E6F),
+        /// <summary>
         /// Original was GL_PATCH_VERTICES = 0x8E72
         /// </summary>
         PatchVertices = ((int)0x8E72),
@@ -12661,6 +12765,10 @@ namespace OpenTK.Graphics.ES31
         /// </summary>
         FragmentCoverageColorNv = ((int)0x92DE),
         /// <summary>
+        /// Original was GL_MESH_OUTPUT_PER_VERTEX_GRANULARITY_NV = 0x92DF
+        /// </summary>
+        MeshOutputPerVertexGranularityNv = ((int)0x92DF),
+        /// <summary>
         /// Original was GL_DEBUG_OUTPUT = 0x92E0
         /// </summary>
         DebugOutput = ((int)0x92E0),
@@ -13177,6 +13285,10 @@ namespace OpenTK.Graphics.ES31
         /// </summary>
         ViewportPositionWScaleYCoeffNv = ((int)0x937E),
         /// <summary>
+        /// Original was GL_REPRESENTATIVE_FRAGMENT_TEST_NV = 0x937F
+        /// </summary>
+        RepresentativeFragmentTestNv = ((int)0x937F),
+        /// <summary>
         /// Original was GL_NUM_SAMPLE_COUNTS = 0x9380
         /// </summary>
         NumSampleCounts = ((int)0x9380),
@@ -13473,6 +13585,66 @@ namespace OpenTK.Graphics.ES31
         /// </summary>
         LayoutDepthAttachmentStencilReadOnlyExt = ((int)0x9531),
         /// <summary>
+        /// Original was GL_SUBGROUP_SIZE_KHR = 0x9532
+        /// </summary>
+        SubgroupSizeKhr = ((int)0x9532),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533
+        /// </summary>
+        SubgroupSupportedStagesKhr = ((int)0x9533),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_FEATURES_KHR = 0x9534
+        /// </summary>
+        SubgroupSupportedFeaturesKhr = ((int)0x9534),
+        /// <summary>
+        /// Original was GL_SUBGROUP_QUAD_ALL_STAGES_KHR = 0x9535
+        /// </summary>
+        SubgroupQuadAllStagesKhr = ((int)0x9535),
+        /// <summary>
+        /// Original was GL_MAX_MESH_TOTAL_MEMORY_SIZE_NV = 0x9536
+        /// </summary>
+        MaxMeshTotalMemorySizeNv = ((int)0x9536),
+        /// <summary>
+        /// Original was GL_MAX_TASK_TOTAL_MEMORY_SIZE_NV = 0x9537
+        /// </summary>
+        MaxTaskTotalMemorySizeNv = ((int)0x9537),
+        /// <summary>
+        /// Original was GL_MAX_MESH_OUTPUT_VERTICES_NV = 0x9538
+        /// </summary>
+        MaxMeshOutputVerticesNv = ((int)0x9538),
+        /// <summary>
+        /// Original was GL_MAX_MESH_OUTPUT_PRIMITIVES_NV = 0x9539
+        /// </summary>
+        MaxMeshOutputPrimitivesNv = ((int)0x9539),
+        /// <summary>
+        /// Original was GL_MAX_TASK_OUTPUT_COUNT_NV = 0x953A
+        /// </summary>
+        MaxTaskOutputCountNv = ((int)0x953A),
+        /// <summary>
+        /// Original was GL_MAX_MESH_WORK_GROUP_SIZE_NV = 0x953B
+        /// </summary>
+        MaxMeshWorkGroupSizeNv = ((int)0x953B),
+        /// <summary>
+        /// Original was GL_MAX_TASK_WORK_GROUP_SIZE_NV = 0x953C
+        /// </summary>
+        MaxTaskWorkGroupSizeNv = ((int)0x953C),
+        /// <summary>
+        /// Original was GL_MAX_DRAW_MESH_TASKS_COUNT_NV = 0x953D
+        /// </summary>
+        MaxDrawMeshTasksCountNv = ((int)0x953D),
+        /// <summary>
+        /// Original was GL_MESH_WORK_GROUP_SIZE_NV = 0x953E
+        /// </summary>
+        MeshWorkGroupSizeNv = ((int)0x953E),
+        /// <summary>
+        /// Original was GL_TASK_WORK_GROUP_SIZE_NV = 0x953F
+        /// </summary>
+        TaskWorkGroupSizeNv = ((int)0x953F),
+        /// <summary>
+        /// Original was GL_MESH_OUTPUT_PER_PRIMITIVE_GRANULARITY_NV = 0x9543
+        /// </summary>
+        MeshOutputPerPrimitiveGranularityNv = ((int)0x9543),
+        /// <summary>
         /// Original was GL_CONSERVATIVE_RASTER_MODE_NV = 0x954D
         /// </summary>
         ConservativeRasterModeNv = ((int)0x954D),
@@ -13488,6 +13660,126 @@ namespace OpenTK.Graphics.ES31
         /// Original was GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_NV = 0x9550
         /// </summary>
         ConservativeRasterModePreSnapNv = ((int)0x9550),
+        /// <summary>
+        /// Original was GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555
+        /// </summary>
+        ScissorTestExclusiveNv = ((int)0x9555),
+        /// <summary>
+        /// Original was GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556
+        /// </summary>
+        ScissorBoxExclusiveNv = ((int)0x9556),
+        /// <summary>
+        /// Original was GL_MAX_MESH_VIEWS_NV = 0x9557
+        /// </summary>
+        MaxMeshViewsNv = ((int)0x9557),
+        /// <summary>
+        /// Original was GL_MESH_SHADER_NV = 0x9559
+        /// </summary>
+        MeshShaderNv = ((int)0x9559),
+        /// <summary>
+        /// Original was GL_TASK_SHADER_NV = 0x955A
+        /// </summary>
+        TaskShaderNv = ((int)0x955A),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_BINDING_NV = 0x955B
+        /// </summary>
+        ShadingRateImageBindingNv = ((int)0x955B),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_TEXEL_WIDTH_NV = 0x955C
+        /// </summary>
+        ShadingRateImageTexelWidthNv = ((int)0x955C),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_TEXEL_HEIGHT_NV = 0x955D
+        /// </summary>
+        ShadingRateImageTexelHeightNv = ((int)0x955D),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PALETTE_SIZE_NV = 0x955E
+        /// </summary>
+        ShadingRateImagePaletteSizeNv = ((int)0x955E),
+        /// <summary>
+        /// Original was GL_MAX_COARSE_FRAGMENT_SAMPLES_NV = 0x955F
+        /// </summary>
+        MaxCoarseFragmentSamplesNv = ((int)0x955F),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_NV = 0x9563
+        /// </summary>
+        ShadingRateImageNv = ((int)0x9563),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_NO_INVOCATIONS_NV = 0x9564
+        /// </summary>
+        ShadingRateNoInvocationsNv = ((int)0x9564),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV = 0x9565
+        /// </summary>
+        ShadingRate1InvocationPerPixelNv = ((int)0x9565),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV = 0x9566
+        /// </summary>
+        ShadingRate1InvocationPer1X2PixelsNv = ((int)0x9566),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV = 0x9567
+        /// </summary>
+        ShadingRate1InvocationPer2X1PixelsNv = ((int)0x9567),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_NV = 0x9568
+        /// </summary>
+        ShadingRate1InvocationPer2X2PixelsNv = ((int)0x9568),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_NV = 0x9569
+        /// </summary>
+        ShadingRate1InvocationPer2X4PixelsNv = ((int)0x9569),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_NV = 0x956A
+        /// </summary>
+        ShadingRate1InvocationPer4X2PixelsNv = ((int)0x956A),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_NV = 0x956B
+        /// </summary>
+        ShadingRate1InvocationPer4X4PixelsNv = ((int)0x956B),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV = 0x956C
+        /// </summary>
+        ShadingRate2InvocationsPerPixelNv = ((int)0x956C),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV = 0x956D
+        /// </summary>
+        ShadingRate4InvocationsPerPixelNv = ((int)0x956D),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV = 0x956E
+        /// </summary>
+        ShadingRate8InvocationsPerPixelNv = ((int)0x956E),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV = 0x956F
+        /// </summary>
+        ShadingRate16InvocationsPerPixelNv = ((int)0x956F),
+        /// <summary>
+        /// Original was GL_MESH_VERTICES_OUT_NV = 0x9579
+        /// </summary>
+        MeshVerticesOutNv = ((int)0x9579),
+        /// <summary>
+        /// Original was GL_MESH_PRIMITIVES_OUT_NV = 0x957A
+        /// </summary>
+        MeshPrimitivesOutNv = ((int)0x957A),
+        /// <summary>
+        /// Original was GL_MESH_OUTPUT_TYPE_NV = 0x957B
+        /// </summary>
+        MeshOutputTypeNv = ((int)0x957B),
+        /// <summary>
+        /// Original was GL_MESH_SUBROUTINE_NV = 0x957C
+        /// </summary>
+        MeshSubroutineNv = ((int)0x957C),
+        /// <summary>
+        /// Original was GL_TASK_SUBROUTINE_NV = 0x957D
+        /// </summary>
+        TaskSubroutineNv = ((int)0x957D),
+        /// <summary>
+        /// Original was GL_MESH_SUBROUTINE_UNIFORM_NV = 0x957E
+        /// </summary>
+        MeshSubroutineUniformNv = ((int)0x957E),
+        /// <summary>
+        /// Original was GL_TASK_SUBROUTINE_UNIFORM_NV = 0x957F
+        /// </summary>
+        TaskSubroutineUniformNv = ((int)0x957F),
         /// <summary>
         /// Original was GL_TEXTURE_TILING_EXT = 0x9580
         /// </summary>
@@ -13600,6 +13892,58 @@ namespace OpenTK.Graphics.ES31
         /// Original was GL_PROTECTED_MEMORY_OBJECT_EXT = 0x959B
         /// </summary>
         ProtectedMemoryObjectExt = ((int)0x959B),
+        /// <summary>
+        /// Original was GL_UNIFORM_BLOCK_REFERENCED_BY_MESH_SHADER_NV = 0x959C
+        /// </summary>
+        UniformBlockReferencedByMeshShaderNv = ((int)0x959C),
+        /// <summary>
+        /// Original was GL_UNIFORM_BLOCK_REFERENCED_BY_TASK_SHADER_NV = 0x959D
+        /// </summary>
+        UniformBlockReferencedByTaskShaderNv = ((int)0x959D),
+        /// <summary>
+        /// Original was GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_MESH_SHADER_NV = 0x959E
+        /// </summary>
+        AtomicCounterBufferReferencedByMeshShaderNv = ((int)0x959E),
+        /// <summary>
+        /// Original was GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_TASK_SHADER_NV = 0x959F
+        /// </summary>
+        AtomicCounterBufferReferencedByTaskShaderNv = ((int)0x959F),
+        /// <summary>
+        /// Original was GL_REFERENCED_BY_MESH_SHADER_NV = 0x95A0
+        /// </summary>
+        ReferencedByMeshShaderNv = ((int)0x95A0),
+        /// <summary>
+        /// Original was GL_REFERENCED_BY_TASK_SHADER_NV = 0x95A1
+        /// </summary>
+        ReferencedByTaskShaderNv = ((int)0x95A1),
+        /// <summary>
+        /// Original was GL_MAX_MESH_WORK_GROUP_INVOCATIONS_NV = 0x95A2
+        /// </summary>
+        MaxMeshWorkGroupInvocationsNv = ((int)0x95A2),
+        /// <summary>
+        /// Original was GL_MAX_TASK_WORK_GROUP_INVOCATIONS_NV = 0x95A3
+        /// </summary>
+        MaxTaskWorkGroupInvocationsNv = ((int)0x95A3),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_SAMPLE_ORDER_DEFAULT_NV = 0x95AE
+        /// </summary>
+        ShadingRateSampleOrderDefaultNv = ((int)0x95AE),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_SAMPLE_ORDER_PIXEL_MAJOR_NV = 0x95AF
+        /// </summary>
+        ShadingRateSampleOrderPixelMajorNv = ((int)0x95AF),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_SAMPLE_ORDER_SAMPLE_MAJOR_NV = 0x95B0
+        /// </summary>
+        ShadingRateSampleOrderSampleMajorNv = ((int)0x95B0),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1
+        /// </summary>
+        ShadingRateImagePerPrimitiveNv = ((int)0x95B1),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2
+        /// </summary>
+        ShadingRateImagePaletteCountNv = ((int)0x95B2),
         /// <summary>
         /// Original was GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR = 0x9630
         /// </summary>
@@ -17452,6 +17796,42 @@ namespace OpenTK.Graphics.ES31
         /// Original was GL_GL_SAMPLE_MASK = 0x8E51
         /// </summary>
         GlSampleMask = ((int)0x8E51),
+        /// <summary>
+        /// Original was GL_REPRESENTATIVE_FRAGMENT_TEST_NV = 0x937F
+        /// </summary>
+        RepresentativeFragmentTestNv = ((int)0x937F),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SIZE_KHR = 0x9532
+        /// </summary>
+        SubgroupSizeKhr = ((int)0x9532),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533
+        /// </summary>
+        SubgroupSupportedStagesKhr = ((int)0x9533),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_FEATURES_KHR = 0x9534
+        /// </summary>
+        SubgroupSupportedFeaturesKhr = ((int)0x9534),
+        /// <summary>
+        /// Original was GL_SUBGROUP_QUAD_ALL_STAGES_KHR = 0x9535
+        /// </summary>
+        SubgroupQuadAllStagesKhr = ((int)0x9535),
+        /// <summary>
+        /// Original was GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555
+        /// </summary>
+        ScissorTestExclusiveNv = ((int)0x9555),
+        /// <summary>
+        /// Original was GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556
+        /// </summary>
+        ScissorBoxExclusiveNv = ((int)0x9556),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1
+        /// </summary>
+        ShadingRateImagePerPrimitiveNv = ((int)0x95B1),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2
+        /// </summary>
+        ShadingRateImagePaletteCountNv = ((int)0x95B2),
     }
 
     /// <summary>
@@ -26873,6 +27253,34 @@ namespace OpenTK.Graphics.ES31
         /// </summary>
         GlMaxFramebufferSamples = ((int)0x9318),
         /// <summary>
+        /// Original was GL_REPRESENTATIVE_FRAGMENT_TEST_NV = 0x937F
+        /// </summary>
+        RepresentativeFragmentTestNv = ((int)0x937F),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SIZE_KHR = 0x9532
+        /// </summary>
+        SubgroupSizeKhr = ((int)0x9532),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533
+        /// </summary>
+        SubgroupSupportedStagesKhr = ((int)0x9533),
+        /// <summary>
+        /// Original was GL_SUBGROUP_SUPPORTED_FEATURES_KHR = 0x9534
+        /// </summary>
+        SubgroupSupportedFeaturesKhr = ((int)0x9534),
+        /// <summary>
+        /// Original was GL_SUBGROUP_QUAD_ALL_STAGES_KHR = 0x9535
+        /// </summary>
+        SubgroupQuadAllStagesKhr = ((int)0x9535),
+        /// <summary>
+        /// Original was GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555
+        /// </summary>
+        ScissorTestExclusiveNv = ((int)0x9555),
+        /// <summary>
+        /// Original was GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556
+        /// </summary>
+        ScissorBoxExclusiveNv = ((int)0x9556),
+        /// <summary>
         /// Original was GL_DEVICE_UUID_EXT = 0x9597
         /// </summary>
         DeviceUuidExt = ((int)0x9597),
@@ -26888,6 +27296,14 @@ namespace OpenTK.Graphics.ES31
         /// Original was GL_DEVICE_NODE_MASK_EXT = 0x959A
         /// </summary>
         DeviceNodeMaskExt = ((int)0x959A),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1
+        /// </summary>
+        ShadingRateImagePerPrimitiveNv = ((int)0x95B1),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2
+        /// </summary>
+        ShadingRateImagePaletteCountNv = ((int)0x95B2),
     }
 
     /// <summary>
@@ -31987,6 +32403,205 @@ namespace OpenTK.Graphics.ES31
     /// <summary>
     /// Not used directly.
     /// </summary>
+    public enum NvMeshShader : int
+    {
+        /// <summary>
+        /// Original was GL_MESH_SHADER_BIT_NV = 0x00000040
+        /// </summary>
+        MeshShaderBitNv = ((int)0x00000040),
+        /// <summary>
+        /// Original was GL_TASK_SHADER_BIT_NV = 0x00000080
+        /// </summary>
+        TaskShaderBitNv = ((int)0x00000080),
+        /// <summary>
+        /// Original was GL_MAX_MESH_UNIFORM_BLOCKS_NV = 0x8E60
+        /// </summary>
+        MaxMeshUniformBlocksNv = ((int)0x8E60),
+        /// <summary>
+        /// Original was GL_MAX_MESH_TEXTURE_IMAGE_UNITS_NV = 0x8E61
+        /// </summary>
+        MaxMeshTextureImageUnitsNv = ((int)0x8E61),
+        /// <summary>
+        /// Original was GL_MAX_MESH_IMAGE_UNIFORMS_NV = 0x8E62
+        /// </summary>
+        MaxMeshImageUniformsNv = ((int)0x8E62),
+        /// <summary>
+        /// Original was GL_MAX_MESH_UNIFORM_COMPONENTS_NV = 0x8E63
+        /// </summary>
+        MaxMeshUniformComponentsNv = ((int)0x8E63),
+        /// <summary>
+        /// Original was GL_MAX_MESH_ATOMIC_COUNTER_BUFFERS_NV = 0x8E64
+        /// </summary>
+        MaxMeshAtomicCounterBuffersNv = ((int)0x8E64),
+        /// <summary>
+        /// Original was GL_MAX_MESH_ATOMIC_COUNTERS_NV = 0x8E65
+        /// </summary>
+        MaxMeshAtomicCountersNv = ((int)0x8E65),
+        /// <summary>
+        /// Original was GL_MAX_MESH_SHADER_STORAGE_BLOCKS_NV = 0x8E66
+        /// </summary>
+        MaxMeshShaderStorageBlocksNv = ((int)0x8E66),
+        /// <summary>
+        /// Original was GL_MAX_COMBINED_MESH_UNIFORM_COMPONENTS_NV = 0x8E67
+        /// </summary>
+        MaxCombinedMeshUniformComponentsNv = ((int)0x8E67),
+        /// <summary>
+        /// Original was GL_MAX_TASK_UNIFORM_BLOCKS_NV = 0x8E68
+        /// </summary>
+        MaxTaskUniformBlocksNv = ((int)0x8E68),
+        /// <summary>
+        /// Original was GL_MAX_TASK_TEXTURE_IMAGE_UNITS_NV = 0x8E69
+        /// </summary>
+        MaxTaskTextureImageUnitsNv = ((int)0x8E69),
+        /// <summary>
+        /// Original was GL_MAX_TASK_IMAGE_UNIFORMS_NV = 0x8E6A
+        /// </summary>
+        MaxTaskImageUniformsNv = ((int)0x8E6A),
+        /// <summary>
+        /// Original was GL_MAX_TASK_UNIFORM_COMPONENTS_NV = 0x8E6B
+        /// </summary>
+        MaxTaskUniformComponentsNv = ((int)0x8E6B),
+        /// <summary>
+        /// Original was GL_MAX_TASK_ATOMIC_COUNTER_BUFFERS_NV = 0x8E6C
+        /// </summary>
+        MaxTaskAtomicCounterBuffersNv = ((int)0x8E6C),
+        /// <summary>
+        /// Original was GL_MAX_TASK_ATOMIC_COUNTERS_NV = 0x8E6D
+        /// </summary>
+        MaxTaskAtomicCountersNv = ((int)0x8E6D),
+        /// <summary>
+        /// Original was GL_MAX_TASK_SHADER_STORAGE_BLOCKS_NV = 0x8E6E
+        /// </summary>
+        MaxTaskShaderStorageBlocksNv = ((int)0x8E6E),
+        /// <summary>
+        /// Original was GL_MAX_COMBINED_TASK_UNIFORM_COMPONENTS_NV = 0x8E6F
+        /// </summary>
+        MaxCombinedTaskUniformComponentsNv = ((int)0x8E6F),
+        /// <summary>
+        /// Original was GL_MESH_OUTPUT_PER_VERTEX_GRANULARITY_NV = 0x92DF
+        /// </summary>
+        MeshOutputPerVertexGranularityNv = ((int)0x92DF),
+        /// <summary>
+        /// Original was GL_MAX_MESH_TOTAL_MEMORY_SIZE_NV = 0x9536
+        /// </summary>
+        MaxMeshTotalMemorySizeNv = ((int)0x9536),
+        /// <summary>
+        /// Original was GL_MAX_TASK_TOTAL_MEMORY_SIZE_NV = 0x9537
+        /// </summary>
+        MaxTaskTotalMemorySizeNv = ((int)0x9537),
+        /// <summary>
+        /// Original was GL_MAX_MESH_OUTPUT_VERTICES_NV = 0x9538
+        /// </summary>
+        MaxMeshOutputVerticesNv = ((int)0x9538),
+        /// <summary>
+        /// Original was GL_MAX_MESH_OUTPUT_PRIMITIVES_NV = 0x9539
+        /// </summary>
+        MaxMeshOutputPrimitivesNv = ((int)0x9539),
+        /// <summary>
+        /// Original was GL_MAX_TASK_OUTPUT_COUNT_NV = 0x953A
+        /// </summary>
+        MaxTaskOutputCountNv = ((int)0x953A),
+        /// <summary>
+        /// Original was GL_MAX_MESH_WORK_GROUP_SIZE_NV = 0x953B
+        /// </summary>
+        MaxMeshWorkGroupSizeNv = ((int)0x953B),
+        /// <summary>
+        /// Original was GL_MAX_TASK_WORK_GROUP_SIZE_NV = 0x953C
+        /// </summary>
+        MaxTaskWorkGroupSizeNv = ((int)0x953C),
+        /// <summary>
+        /// Original was GL_MAX_DRAW_MESH_TASKS_COUNT_NV = 0x953D
+        /// </summary>
+        MaxDrawMeshTasksCountNv = ((int)0x953D),
+        /// <summary>
+        /// Original was GL_MESH_WORK_GROUP_SIZE_NV = 0x953E
+        /// </summary>
+        MeshWorkGroupSizeNv = ((int)0x953E),
+        /// <summary>
+        /// Original was GL_TASK_WORK_GROUP_SIZE_NV = 0x953F
+        /// </summary>
+        TaskWorkGroupSizeNv = ((int)0x953F),
+        /// <summary>
+        /// Original was GL_MESH_OUTPUT_PER_PRIMITIVE_GRANULARITY_NV = 0x9543
+        /// </summary>
+        MeshOutputPerPrimitiveGranularityNv = ((int)0x9543),
+        /// <summary>
+        /// Original was GL_MAX_MESH_VIEWS_NV = 0x9557
+        /// </summary>
+        MaxMeshViewsNv = ((int)0x9557),
+        /// <summary>
+        /// Original was GL_MESH_SHADER_NV = 0x9559
+        /// </summary>
+        MeshShaderNv = ((int)0x9559),
+        /// <summary>
+        /// Original was GL_TASK_SHADER_NV = 0x955A
+        /// </summary>
+        TaskShaderNv = ((int)0x955A),
+        /// <summary>
+        /// Original was GL_MESH_VERTICES_OUT_NV = 0x9579
+        /// </summary>
+        MeshVerticesOutNv = ((int)0x9579),
+        /// <summary>
+        /// Original was GL_MESH_PRIMITIVES_OUT_NV = 0x957A
+        /// </summary>
+        MeshPrimitivesOutNv = ((int)0x957A),
+        /// <summary>
+        /// Original was GL_MESH_OUTPUT_TYPE_NV = 0x957B
+        /// </summary>
+        MeshOutputTypeNv = ((int)0x957B),
+        /// <summary>
+        /// Original was GL_MESH_SUBROUTINE_NV = 0x957C
+        /// </summary>
+        MeshSubroutineNv = ((int)0x957C),
+        /// <summary>
+        /// Original was GL_TASK_SUBROUTINE_NV = 0x957D
+        /// </summary>
+        TaskSubroutineNv = ((int)0x957D),
+        /// <summary>
+        /// Original was GL_MESH_SUBROUTINE_UNIFORM_NV = 0x957E
+        /// </summary>
+        MeshSubroutineUniformNv = ((int)0x957E),
+        /// <summary>
+        /// Original was GL_TASK_SUBROUTINE_UNIFORM_NV = 0x957F
+        /// </summary>
+        TaskSubroutineUniformNv = ((int)0x957F),
+        /// <summary>
+        /// Original was GL_UNIFORM_BLOCK_REFERENCED_BY_MESH_SHADER_NV = 0x959C
+        /// </summary>
+        UniformBlockReferencedByMeshShaderNv = ((int)0x959C),
+        /// <summary>
+        /// Original was GL_UNIFORM_BLOCK_REFERENCED_BY_TASK_SHADER_NV = 0x959D
+        /// </summary>
+        UniformBlockReferencedByTaskShaderNv = ((int)0x959D),
+        /// <summary>
+        /// Original was GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_MESH_SHADER_NV = 0x959E
+        /// </summary>
+        AtomicCounterBufferReferencedByMeshShaderNv = ((int)0x959E),
+        /// <summary>
+        /// Original was GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_TASK_SHADER_NV = 0x959F
+        /// </summary>
+        AtomicCounterBufferReferencedByTaskShaderNv = ((int)0x959F),
+        /// <summary>
+        /// Original was GL_REFERENCED_BY_MESH_SHADER_NV = 0x95A0
+        /// </summary>
+        ReferencedByMeshShaderNv = ((int)0x95A0),
+        /// <summary>
+        /// Original was GL_REFERENCED_BY_TASK_SHADER_NV = 0x95A1
+        /// </summary>
+        ReferencedByTaskShaderNv = ((int)0x95A1),
+        /// <summary>
+        /// Original was GL_MAX_MESH_WORK_GROUP_INVOCATIONS_NV = 0x95A2
+        /// </summary>
+        MaxMeshWorkGroupInvocationsNv = ((int)0x95A2),
+        /// <summary>
+        /// Original was GL_MAX_TASK_WORK_GROUP_INVOCATIONS_NV = 0x95A3
+        /// </summary>
+        MaxTaskWorkGroupInvocationsNv = ((int)0x95A3),
+    }
+
+    /// <summary>
+    /// Not used directly.
+    /// </summary>
     public enum NvNonSquareMatrices : int
     {
         /// <summary>
@@ -32746,6 +33361,21 @@ namespace OpenTK.Graphics.ES31
     /// <summary>
     /// Not used directly.
     /// </summary>
+    public enum NvPrimitiveShadingRate : int
+    {
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1
+        /// </summary>
+        ShadingRateImagePerPrimitiveNv = ((int)0x95B1),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2
+        /// </summary>
+        ShadingRateImagePaletteCountNv = ((int)0x95B2),
+    }
+
+    /// <summary>
+    /// Not used directly.
+    /// </summary>
     public enum NvReadBuffer : int
     {
         /// <summary>
@@ -32780,6 +33410,17 @@ namespace OpenTK.Graphics.ES31
     /// </summary>
     public enum NvReadStencil : int
     {
+    }
+
+    /// <summary>
+    /// Not used directly.
+    /// </summary>
+    public enum NvRepresentativeFragmentTest : int
+    {
+        /// <summary>
+        /// Original was GL_REPRESENTATIVE_FRAGMENT_TEST_NV = 0x937F
+        /// </summary>
+        RepresentativeFragmentTestNv = ((int)0x937F),
     }
 
     /// <summary>
@@ -32832,6 +33473,21 @@ namespace OpenTK.Graphics.ES31
     /// <summary>
     /// Not used directly.
     /// </summary>
+    public enum NvScissorExclusive : int
+    {
+        /// <summary>
+        /// Original was GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555
+        /// </summary>
+        ScissorTestExclusiveNv = ((int)0x9555),
+        /// <summary>
+        /// Original was GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556
+        /// </summary>
+        ScissorBoxExclusiveNv = ((int)0x9556),
+    }
+
+    /// <summary>
+    /// Not used directly.
+    /// </summary>
     public enum NvShaderAtomicFp16Vector : int
     {
     }
@@ -32841,6 +33497,97 @@ namespace OpenTK.Graphics.ES31
     /// </summary>
     public enum NvShaderNoperspectiveInterpolation : int
     {
+    }
+
+    /// <summary>
+    /// Used in GL.NV.GetShadingRateImagePalette, GL.NV.GetShadingRateSampleLocation and 3 other functions
+    /// </summary>
+    public enum NvShadingRateImage : int
+    {
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_BINDING_NV = 0x955B
+        /// </summary>
+        ShadingRateImageBindingNv = ((int)0x955B),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_TEXEL_WIDTH_NV = 0x955C
+        /// </summary>
+        ShadingRateImageTexelWidthNv = ((int)0x955C),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_TEXEL_HEIGHT_NV = 0x955D
+        /// </summary>
+        ShadingRateImageTexelHeightNv = ((int)0x955D),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_PALETTE_SIZE_NV = 0x955E
+        /// </summary>
+        ShadingRateImagePaletteSizeNv = ((int)0x955E),
+        /// <summary>
+        /// Original was GL_MAX_COARSE_FRAGMENT_SAMPLES_NV = 0x955F
+        /// </summary>
+        MaxCoarseFragmentSamplesNv = ((int)0x955F),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_IMAGE_NV = 0x9563
+        /// </summary>
+        ShadingRateImageNv = ((int)0x9563),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_NO_INVOCATIONS_NV = 0x9564
+        /// </summary>
+        ShadingRateNoInvocationsNv = ((int)0x9564),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV = 0x9565
+        /// </summary>
+        ShadingRate1InvocationPerPixelNv = ((int)0x9565),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV = 0x9566
+        /// </summary>
+        ShadingRate1InvocationPer1X2PixelsNv = ((int)0x9566),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV = 0x9567
+        /// </summary>
+        ShadingRate1InvocationPer2X1PixelsNv = ((int)0x9567),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_NV = 0x9568
+        /// </summary>
+        ShadingRate1InvocationPer2X2PixelsNv = ((int)0x9568),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_NV = 0x9569
+        /// </summary>
+        ShadingRate1InvocationPer2X4PixelsNv = ((int)0x9569),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_NV = 0x956A
+        /// </summary>
+        ShadingRate1InvocationPer4X2PixelsNv = ((int)0x956A),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_NV = 0x956B
+        /// </summary>
+        ShadingRate1InvocationPer4X4PixelsNv = ((int)0x956B),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV = 0x956C
+        /// </summary>
+        ShadingRate2InvocationsPerPixelNv = ((int)0x956C),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV = 0x956D
+        /// </summary>
+        ShadingRate4InvocationsPerPixelNv = ((int)0x956D),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV = 0x956E
+        /// </summary>
+        ShadingRate8InvocationsPerPixelNv = ((int)0x956E),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV = 0x956F
+        /// </summary>
+        ShadingRate16InvocationsPerPixelNv = ((int)0x956F),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_SAMPLE_ORDER_DEFAULT_NV = 0x95AE
+        /// </summary>
+        ShadingRateSampleOrderDefaultNv = ((int)0x95AE),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_SAMPLE_ORDER_PIXEL_MAJOR_NV = 0x95AF
+        /// </summary>
+        ShadingRateSampleOrderPixelMajorNv = ((int)0x95AF),
+        /// <summary>
+        /// Original was GL_SHADING_RATE_SAMPLE_ORDER_SAMPLE_MAJOR_NV = 0x95B0
+        /// </summary>
+        ShadingRateSampleOrderSampleMajorNv = ((int)0x95B0),
     }
 
     /// <summary>
@@ -38543,6 +39290,45 @@ namespace OpenTK.Graphics.ES31
     /// <summary>
     /// Not used directly.
     /// </summary>
+    public enum SubgroupSupportedFeatures : int
+    {
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_BASIC_BIT_KHR = 0x00000001
+        /// </summary>
+        SubgroupFeatureBasicBitKhr = ((int)0x00000001),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_VOTE_BIT_KHR = 0x00000002
+        /// </summary>
+        SubgroupFeatureVoteBitKhr = ((int)0x00000002),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_ARITHMETIC_BIT_KHR = 0x00000004
+        /// </summary>
+        SubgroupFeatureArithmeticBitKhr = ((int)0x00000004),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_BALLOT_BIT_KHR = 0x00000008
+        /// </summary>
+        SubgroupFeatureBallotBitKhr = ((int)0x00000008),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_SHUFFLE_BIT_KHR = 0x00000010
+        /// </summary>
+        SubgroupFeatureShuffleBitKhr = ((int)0x00000010),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT_KHR = 0x00000020
+        /// </summary>
+        SubgroupFeatureShuffleRelativeBitKhr = ((int)0x00000020),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_CLUSTERED_BIT_KHR = 0x00000040
+        /// </summary>
+        SubgroupFeatureClusteredBitKhr = ((int)0x00000040),
+        /// <summary>
+        /// Original was GL_SUBGROUP_FEATURE_QUAD_BIT_KHR = 0x00000080
+        /// </summary>
+        SubgroupFeatureQuadBitKhr = ((int)0x00000080),
+    }
+
+    /// <summary>
+    /// Not used directly.
+    /// </summary>
     public enum SubroutineParameterName : int
     {
         /// <summary>
@@ -40649,6 +41435,14 @@ namespace OpenTK.Graphics.ES31
         /// Original was GL_COMPUTE_SHADER_BIT = 0x00000020
         /// </summary>
         ComputeShaderBit = ((int)0x00000020),
+        /// <summary>
+        /// Original was GL_MESH_SHADER_BIT_NV = 0x00000040
+        /// </summary>
+        MeshShaderBitNv = ((int)0x00000040),
+        /// <summary>
+        /// Original was GL_TASK_SHADER_BIT_NV = 0x00000080
+        /// </summary>
+        TaskShaderBitNv = ((int)0x00000080),
         /// <summary>
         /// Original was GL_ALL_SHADER_BITS = 0xFFFFFFFF
         /// </summary>
